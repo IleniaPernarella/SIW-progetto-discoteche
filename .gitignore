@@ -1,0 +1,52 @@
+### Spring ###
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### Logs e temporanei ###
+*.log
+*.tmp
+*.bak
+
+### Configurazioni locali ###
+application.properties
+application-local.yml
+
+### Coverage e report ###
+jacoco.exec
+*.jacoco
+/site/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+### File di progetto ###
+*.class
+*.jar
+*.war
+*.ear
+bin/
+.metadata/
