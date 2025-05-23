@@ -15,8 +15,11 @@ public class DiscotecaService {
 	public Iterable<Discoteca> getAllDiscoteche(){
 		return discotecaRepository.findAll();
 	}
+<<<<<<< HEAD
 	
 	public Discoteca getDiscoteca(Long id) {
 		return discotecaRepository.findById(id).get();
 	}
+=======
+>>>>>>> bd7342ef0c8b5f015d7324f5e497c8d97f1b2be6
 }

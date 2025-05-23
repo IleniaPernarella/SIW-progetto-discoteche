@@ -3,6 +3,7 @@ INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUE
 INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Room 26', 'Spazio underground per musica techno e house.', 'Via Industriale 7, Bologna', 'img/room26.jpg', NULL);
 INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Spazio 900', 'Ampia pista da ballo e terrazza esterna estiva.', 'Viale del Mare 100, Napoli', 'img/spazio900.jpg', NULL);
 INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Jolie', 'Discoteca storica con serate a tema e karaoke.', 'Piazza Centrale 4, Firenze', 'img/jolie.jpg', NULL);
+<<<<<<< HEAD
 
 
 
@@ -24,3 +25,5 @@ INSERT INTO evento (nome, descrizione, data_ora, prezzo, ID_discoteca) VALUES ('
 
 INSERT INTO evento (nome, descrizione, data_ora, prezzo, ID_discoteca) VALUES ('Karaoke Night', 'Canta i tuoi successi preferiti dal vivo!', '2025-06-08 21:00:00', 10.00, 5);
 INSERT INTO evento (nome, descrizione, data_ora, prezzo, ID_discoteca) VALUES ('Serata Latina', 'Bachata, salsa e reggaeton tutta la notte.', '2025-06-14 22:00:00', 18.00, 5);
+=======
+>>>>>>> bd7342ef0c8b5f015d7324f5e497c8d97f1b2be6
