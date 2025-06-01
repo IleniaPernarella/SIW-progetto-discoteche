@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrazione - ItaloDisco</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<section class="sezione-register">
+    <div class="contenitore-form">
+        <h1>Registrazione</h1>
+
+		<form th:action="@{/register}" method="post">
+		    <!-- UTENTE -->
+		    <input type="text" name="nome" th:value="${utente.nome}" required />
+		    <input type="text" name="cognome" th:value="${utente.cognome}" required />
+		    <input type="email" name="email" th:value="${utente.email}" required />
+
+		    <!-- CREDENTIALS -->
+		    <input type="text" name="username" th:value="${credentials.username}" required />
+		    <input type="password" name="password" required />
+
+		    <button type="submit">Registrati</button>
+		</form>
+
+        <div class="login-link">
+            <p>Hai già un account? <a th:href="@{/login}">Accedi qui</a>.</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

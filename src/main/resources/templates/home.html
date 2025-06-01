@@ -1,214 +1,105 @@
-<<<<<<< HEAD
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ItaloDisco - Discoteche di Roma</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <!-- SEZIONE HERO CON LAYER A SOPRAPPOSIZIONE -->
-    <section class="sezione-hero">
-        <!-- Strati grafici dello sfondo -->
-        <div class="immagine-sfondo-hero"></div>
-        <div class="sovrapposizione-hero"></div>
-        <div class="sovrapposizione-header"></div>
-
-        <!-- NAVIGAZIONE PRINCIPALE -->
-		<nav class="navigazione-principale">
-		    <div class="menu-sinistra">
-		        <div class="voce-menu" onclick="location.href='/'">HOME</div>
-		        <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
-		    </div>
-		    <div class="voce-menu pulsante-login" onclick="location.href='/login'">LOGIN</div>
-		</nav>
-
-        <!-- CONTENUTO CENTRALE HERO -->
-        <div class="contenuto-hero">
-            <h1 class="titolo-principale">ITALODISCO</h1>
-            <p class="descrizione-hero">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-        </div>
-    </section>
-
-    <!-- SEZIONE DISCOTECHE CON GRIGLIA RESPONSIVA -->
-    <section class="sezione-discoteche">
-        <h2 class="titolo-sezione">DISCOTECHE DI ROMA</h2>
-
-        <div class="griglia-discoteche">
-            <!-- CARD DINAMICHE PER DISCOTECHE -->
-            <div class="card-discoteca" th:each="discoteca : ${discoteche}"
-                th:onclick="|location.href='/discoteca/' + ${discoteca.id}|">
-                <img th:src="${discoteca.immagine}" alt="Interno discoteca" class="immagine-card">
-                <h3 class="titolo-card" th:text="${discoteca.nome.toUpperCase()}"></h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- PIÈ DI PAGINA CON LAYOUT A GRIGLIA -->
-    <footer class="piè-di-pagina">
-        <div class="contenuto-footer">
-            <!-- COLONNA MARCHIO -->
-            <div class="marchio-footer">
-                <h4>ITALODISCO</h4>
-                <p>©2025 - ItaloDisco</p>
-                <p>P.IVA 893263</p>
-            </div>
-
-            <!-- COLONNA CONTATTI -->
-            <div class="sezione-footer">
-                <h4>CONTATTI</h4>
-                <p>-39 542 928 462</p>
-                <p>italodisco@gmail.com</p>
-                <p>pec@tmp.it</p>
-                <p>FAX 593 039 0293</p>
-            </div>
-
-            <!-- COLONNA INFORMAZIONI -->
-            <div class="sezione-footer">
-                <h4>INFORMAZIONI</h4>
-                <p>Chi siamo</p>
-                <p>Prezzi</p>
-                <p>Lavora con noi</p>
-                <p>Licenza</p>
-            </div>
-
-            <!-- COLONNA SOCIAL -->
-            <div class="sezione-footer">
-                <h4>SOCIAL</h4>
-                <p>Facebook</p>
-                <p>Instagram</p>
-                <p>TikTok</p>
-                <p>LinkedIn</p>
-                <p>YouTube</p>
-                <p>Discord</p>
-            </div>
-
-            <!-- COLONNA PARTNER CON LOGHI -->
-            <div class="partner-footer">
-                <h4>PARTNER</h4>
-                <div class="loghi-partner">
-                    <div class="logo-partner"></div>
-                    <div class="logo-partner"></div>
-                    <div class="logo-partner"></div>
-                    <div class="logo-partner"></div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
-
-=======
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8" />
-  <title>ItaloDisco - Discoteche di Roma</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}" />
-  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Sezione Hero con Sovrapposizione -->
-  <div class="sezione-hero">
-	
-	<div class="immagine-sfondo-hero"></div>
-	<div class="sovrapposizione-hero"></div>
-		
-    <!--<div class="sovrapposizione-hero"></div>-->
+
+<!-- SEZIONE HERO -->
+<section class="sezione-hero">
+    <div class="immagine-sfondo-hero"></div>
+    <div class="sovrapposizione-hero"></div>
     <div class="sovrapposizione-header"></div>
-	
-	
-    
-    <!-- Navigazione -->
+
+    <!-- NAVIGAZIONE -->
     <nav class="navigazione-principale">
-      <div class="voce-menu" onclick="location.href='/'">HOME</div>
-      <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
-      <div class="voce-menu pulsante-login" onclick="location.href='/login'">LOGIN</div>
-    </nav>
-    
-    <!-- Contenuto Hero -->
-    <div class="contenuto-hero">
-      <h1 class="titolo-principale">ITALODISCO</h1>
-      <p class="descrizione-hero">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-        sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-      </p>
-    </div>
-  </div>
-  
-  <!-- Sezione Discoteche -->
-  <section class="sezione-discoteche">
-    <h2 class="titolo-sezione">DISCOTECHE DI ROMA</h2>
-    
-    <div class="griglia-discoteche">
-      <div class="card-discoteca" th:each="discoteca : ${discoteche}" 
-           th:onclick="|location.href='/discoteca/' + ${discoteca.id}|">
-        <img th:src="${discoteca.immagine}" alt="Immagine Discoteca" class="immagine-card">
-        <h3 class="titolo-card" th:text="${discoteca.nome.toUpperCase()}"></h3>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer class="piè-di-pagina">
-    <div class="contenuto-footer">
-      <div class="marchio-footer">
-        <h4>ITALODISCO</h4>
-        <p>©2025 - ItaloDisco</p>
-        <p>P.IVA 893263</p>
-      </div>
-      
-      <div class="sezione-footer">
-        <h4>CONTATTI</h4>
-        <p>-39 542 928 462</p>
-        <p>italodisco@gmail.com</p>
-        <p>pec@tmp.it</p>
-        <p>FAX 593 039 0293</p>
-      </div>
-      
-      <div class="sezione-footer">
-        <h4>INFORMAZIONI</h4>
-        <p>Chi siamo</p>
-        <p>Prezzi</p>
-        <p>Lavora con noi</p>
-        <p>Licenza</p>
-      </div>
-      
-      <div class="sezione-footer">
-        <h4>SOCIAL</h4>
-        <p>Facebook</p>
-        <p>Instagram</p>
-        <p>TikTok</p>
-        <p>LinkedIn</p>
-        <p>YouTube</p>
-        <p>Discord</p>
-      </div>
-      
-      <div class="partner-footer">
-        <h4>PARTNER</h4>
-        <div class="loghi-partner">
-          <div class="logo-partner"></div>
-          <div class="logo-partner"></div>
-          <div class="logo-partner"></div>
-          <div class="logo-partner"></div>
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+            <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
         </div>
-      </div>
+
+        <!-- LOGIN / LOGOUT + BENVENUTO -->
+		<div class="menu-destra">
+		    <div sec:authorize="isAuthenticated()">
+		        <span class="voce-menu">Benvenut*, <span th:text="${#authentication.name}">Utente</span></span>
+		        <div class="voce-menu pulsante-login" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+		        <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+		    </div>
+		    <div sec:authorize="isAnonymous()">
+		        <div class="voce-menu pulsante-login" onclick="location.href='/login'">LOGIN</div>
+		    </div>
+		</div>
+    </nav>
+
+    <!-- CONTENUTO HERO -->
+    <div class="contenuto-hero">
+        <h1 class="titolo-principale">ITALODISCO</h1>
+        <p class="descrizione-hero">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...
+        </p>
     </div>
-  </footer>
+</section>
+
+<!-- SEZIONE DISCOTECHE -->
+<section class="sezione-discoteche">
+    <h2 class="titolo-sezione">DISCOTECHE DI ROMA</h2>
+
+    <div class="griglia-discoteche">
+        <div class="card-discoteca" th:each="discoteca : ${discoteche}"
+             th:onclick="|location.href='/discoteca/' + ${discoteca.id}|">
+            <img th:src="${discoteca.immagine}" alt="Interno discoteca" class="immagine-card">
+            <h3 class="titolo-card" th:text="${discoteca.nome.toUpperCase()}"></h3>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="piè-di-pagina">
+    <div class="contenuto-footer">
+        <div class="marchio-footer">
+            <h4>ITALODISCO</h4>
+            <p>©2025 - ItaloDisco</p>
+            <p>P.IVA 893263</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>CONTATTI</h4>
+            <p>-39 542 928 462</p>
+            <p>italodisco@gmail.com</p>
+            <p>pec@tmp.it</p>
+            <p>FAX 593 039 0293</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>INFORMAZIONI</h4>
+            <p>Chi siamo</p>
+            <p>Prezzi</p>
+            <p>Lavora con noi</p>
+            <p>Licenza</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>SOCIAL</h4>
+            <p>Facebook</p>
+            <p>Instagram</p>
+            <p>TikTok</p>
+            <p>LinkedIn</p>
+            <p>YouTube</p>
+            <p>Discord</p>
+        </div>
+        <div class="partner-footer">
+            <h4>PARTNER</h4>
+            <div class="loghi-partner">
+                <div class="logo-partner"></div>
+                <div class="logo-partner"></div>
+                <div class="logo-partner"></div>
+                <div class="logo-partner"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
->>>>>>> bd7342ef0c8b5f015d7324f5e497c8d97f1b2be6

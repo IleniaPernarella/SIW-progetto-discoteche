@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -19,45 +19,49 @@
         <div class="sovrapposizione-hero"></div>
         <div class="sovrapposizione-header"></div>
 
-		<!-- NAVIGAZIONE PRINCIPALE -->
-				<nav class="navigazione-principale">
-				    <div class="menu-sinistra">
-				        <div class="voce-menu" onclick="location.href='/'">HOME</div>
-				        <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
-				    </div>
-				    <div class="voce-menu pulsante-login" onclick="location.href='/login'">LOGIN</div>
-				</nav>
+        <!-- NAVIGAZIONE PRINCIPALE -->
+        <nav class="navigazione-principale">
+            <div class="menu-sinistra">
+                <div class="voce-menu" onclick="location.href='/'">HOME</div>
+                <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
+            </div>
 
-		
-		<!-- <div class="voce-menu pulsante-login" onclick="location.href='/login'"> <span th:text="${utente.nome}">LOGIN</span>
-					</div>-->
-		
+            <!-- LOGIN / LOGOUT UNIFICATO -->
+            <div class="menu-destra">
+                <div class="voce-menu" sec:authorize="isAuthenticated()">
+                    <span th:text="${#authentication.name}">Utente</span>
+                </div>
+                <div class="voce-menu pulsante-login" sec:authorize="isAuthenticated()" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+                <form id="logoutForm" th:action="@{/logout}" method="post" style="display: none;"></form>
+
+                <div class="voce-menu pulsante-login" sec:authorize="isAnonymous()" onclick="location.href='/login'">LOGIN</div>
+            </div>
+        </nav>
+
         <!-- CONTENUTO CENTRALE HERO -->
         <div class="contenuto-hero">
-            <h1 class="discoteca-principale" th:text="${discoteca.nome}"></h1> 
-            <p class="descrizione-hero" th:text="${discoteca.indirizzo}"></p> 
-			<p class="descrizione-hero" th:text="${discoteca.descrizione}"></p> 
+            <h1 class="discoteca-principale" th:text="${discoteca.nome}"></h1>
+            <p class="descrizione-hero" th:text="${discoteca.indirizzo}"></p>
+            <p class="descrizione-hero" th:text="${discoteca.descrizione}"></p>
         </div>
     </section>
 
-    
-	<!-- SEZIONE DISCOTECHE CON ELENCO DI EVENTI -->
-	<section class="sezione-discoteche">
-	    <h2 class="titolo-sezione">EVENTI</h2>
-	    
-			<div th:if="${#lists.isEmpty(eventi)}">
-			<h1 class="evento">Non ci sono eventi per questa discoteca</h1>
-			</div>
-			
-	        <div th:each="evento : ${eventi}" class="evento">
-	            <h4 class="descrizione-hero" th:text="${evento.nome}">Nome Evento</h4>
-	            <p class="descrizione-hero" th:text="${evento.descrizione}">Descrizione Evento</p>
-	            <p class="descrizione-hero" th:text="${evento.dataOra}">Data e Ora Evento</p>
-	            <p class="descrizione-hero" th:text="${evento.prezzo} + ' €'">Prezzo Evento</p>
-	            <hr /> <!-- Linea di separazione tra gli eventi -->
-	       
-	    </div>
-	</section>>
+    <!-- SEZIONE DISCOTECHE CON ELENCO DI EVENTI -->
+    <section class="sezione-discoteche">
+        <h2 class="titolo-sezione">EVENTI</h2>
+
+        <div th:if="${#lists.isEmpty(eventi)}">
+            <h1 class="evento">Non ci sono eventi per questa discoteca</h1>
+        </div>
+
+        <div th:each="evento : ${eventi}" class="evento">
+            <h4 class="descrizione-hero" th:text="${evento.nome}">Nome Evento</h4>
+            <p class="descrizione-hero" th:text="${evento.descrizione}">Descrizione Evento</p>
+            <p class="descrizione-hero" th:text="${evento.dataOra}">Data e Ora Evento</p>
+            <p class="descrizione-hero" th:text="${evento.prezzo} + ' €'">Prezzo Evento</p>
+            <hr />
+        </div>
+    </section>
 
     <!-- PIÈ DI PAGINA CON LAYOUT A GRIGLIA -->
     <footer class="piè-di-pagina">
@@ -111,6 +115,4 @@
         </div>
     </footer>
 </body>
-
 </html>
-

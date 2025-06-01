@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* =============== RESET GENERALE =============== */
 
 /* Resetta margin, padding e imposta box-sizing per tutti gli elementi */
@@ -163,7 +162,15 @@ body {
 .sezione-discoteche {
     background-color: #383838; /* Sfondo grigio scuro */
     padding: 60px 40px;     /* Spaziatura interna */
+	margin-top: 0; /* Rimuovi eventuali margini superiori */
 }
+
+/* Estensione del padding inferiore per garantire che il grigio si estenda */
+/*
+.sezione-discoteche .evento {
+    padding-bottom: 20px;  Aggiungi padding inferiore per estendere visivamente 
+}    */
+
 
 /* Titolo della sezione */
 .titolo-sezione {
@@ -191,14 +198,16 @@ body {
     border-radius: 41px;    /* Bordi molto arrotondati */
     overflow: hidden;       /* Nasconde contenuto fuori dai bordi */
     cursor: pointer;        
-    box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.15); /* Ombra leggera */
+    box-shadow: 4px 5px 4px rgba(0,0, 0, 0.15); /* Ombra leggera */
     transition: transform 0.3s, box-shadow 0.3s; /* Animazioni al passaggio */
 }
 
 /* Effetto hover per la card */
 .card-discoteca:hover {
     transform: scale(1.03); /* Leggero ingrandimento */
-    box-shadow: 4px 5px 15px rgba(0, 0, 0, 0.3); /* Ombra più marcata */
+    box-shadow: 4px 4px 4px rgb(128, 255, 255); /* Ombra più marcata */
+	    
+	
 }
 
 /* Immagine nella card */
@@ -226,7 +235,7 @@ body {
 .piè-di-pagina {
     background-color: #212121; /* Sfondo grigio molto scuro */
     padding: 60px 40px;     
-    margin-top: auto;        /* Per sticky footer se body è flex */
+    margin-top: -20px;        /* Per sticky footer se body è flex */
     color: #fff;
 }
 
@@ -298,6 +307,8 @@ body {
 	    text-align: left;       /* Allineamento testo a sinistra */
 	    padding-left: 40px;     /* Spaziatura sinistra */
 	    margin-top: 16px;
+		margin:0;
+		padding:0;
 }
 /* Stile per il titolo dell'evento */
 .evento h4 {
@@ -310,296 +321,45 @@ body {
     font-size: 20px;        /* Dimensione standard per i dettagli */
     color: rgb(255, 255, 255);            /* Colore del testo grigio per i dettagli */
     margin: 0;              /* Rimuove margini predefiniti */
-}
-=======
-/* Stili Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	padding:0;
 }
 
-body {
-  font-family: 'Geologica', sans-serif;
-  color: #ffffff;
-  background-color: #ffffff;
-  position: relative;
+.evento hr {
+    margin-top: 40px; /* Sposta la linea orizzontale più in basso */
+    margin-bottom: 40px; /* Opzionale: aggiungi margine inferiore per spazio */
 }
 
-/* Sezione Hero */
-.sezione-hero {
-  position: relative;
-  height: 673px;
-  width: 100%;
-  background-color: #000000;
-  overflow: hidden;
+
+/*LOGIN*/
+.box-login {
+    background-color: rgba(255,255,255,0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.immagine-sfondo-hero {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/img/img-sfondo.jpg'); /* Percorso dell'immagine */
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-}
-
-.sovrapposizione-hero {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Regola l'opacità qui (0.6 = 60%) */
-  box-shadow: 0 9px 4px rgba(0, 0, 0, 0.09);
-}
-
-.sovrapposizione-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 114px;
-  background-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.11);
-}
-
-/* Navigazione */
-.navigazione-principale {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  z-index: 100;
-}
-
-.voce-menu {
-  font-size: 20px;
-  letter-spacing: 13px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.voce-menu:hover {
-  color: #04ffff;
-}
-
-.pulsante-login {
-  margin-left: auto;
-  background-color: rgba(255, 255, 255, 0.39);
-  padding: 5px 15px;
-  border-radius: 32px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 13px;
-  letter-spacing: 13px;
-}
-
-/* Contenuto Hero */
-.contenuto-hero {
-  position: relative;
-  padding: 0 40px;
-  z-index: 10;
-  margin-top: 100px;
-}
-
-.titolo-principale {
-  font-size: 64px;
-  letter-spacing: 55px;
-  text-align: center;
-  margin-bottom: 60px;
-  text-transform: uppercase;
-}
-
-.descrizione-hero {
-  font-size: 20px;
-  line-height: 1.6;
-  max-width: 836px;
-  margin: 0 auto;
-}
-
-/* Sezione Discoteche */
-.sezione-discoteche {
-  background-color: #383838;
-  padding: 60px 40px;
-  position: relative;
-}
-
-.titolo-sezione {
-  font-size: 36px;
-  letter-spacing: 55px;
-  text-align: center;
-  margin-bottom: 60px;
-  text-transform: uppercase;
-}
-
-.griglia-discoteche {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 40px;
-}
-
-.card-discoteca {
-  position: relative;
-  width: 411px;
-  height: 222px;
-  border-radius: 41px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s;
-}
-
-.card-discoteca:hover {
-  transform: scale(1.03);
-}
-
-.immagine-card {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
-}
-
-.titolo-card {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 36px;
-  letter-spacing: 27px;
-  text-transform: uppercase;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-}
-
-/* Piè di pagina */
-.piè-di-pagina {
-  background-color: #212121;
-  padding: 60px 40px;
-}
-
-.contenuto-footer {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.marchio-footer h4 {
-  font-size: 20px;
-  letter-spacing: 55px;
-  margin-bottom: 20px;
-}
-
-.marchio-footer p, .sezione-footer p {
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-.sezione-footer h4 {
-  font-size: 15px;
-  letter-spacing: 34px;
-  margin-bottom: 20px;
-}
-
-.partner-footer h4 {
-  font-size: 15px;
-  letter-spacing: 34px;
-  margin-bottom: 20px;
-}
-
-.loghi-partner {
-  display: flex;
-  gap: 15px;
-}
-
-.logo-partner {
-  width: 36px;
-  height: 36px;
-  background-color: #d9d9d9;
-  border-radius: 50%;
-}
-
-/* Design Responsive */
-@media (max-width: 1200px) {
-  .titolo-principale {
-    font-size: 48px;
-    letter-spacing: 30px;
-  }
-  
-  .titolo-sezione {
-    font-size: 28px;
-    letter-spacing: 30px;
-  }
-  
-  .card-discoteca {
-    width: 48%;
-  }
-}
-
-@media (max-width: 768px) {
-  .navigazione-principale {
-    padding: 20px;
-    gap: 20px;
-  }
-  
-  .voce-menu {
-    font-size: 16px;
-    letter-spacing: 8px;
-  }
-  
-  .titolo-principale {
-    font-size: 36px;
-    letter-spacing: 15px;
-    margin-bottom: 30px;
-  }
-  
-  .descrizione-hero {
-    font-size: 16px;
-  }
-  
-  .titolo-sezione {
-    font-size: 24px;
-    letter-spacing: 15px;
-  }
-  
-  .titolo-card {
-    font-size: 24px;
-    letter-spacing: 15px;
-  }
-  
-  .contenuto-footer {
+.form-login {
+    display: flex;
     flex-direction: column;
-    gap: 30px;
-  }
-  
-  .card-discoteca {
-    width: 100%;
-  }
+    gap: 1rem;
 }
 
-@media (max-width: 480px) {
-  .titolo-principale {
-    font-size: 28px;
-    letter-spacing: 10px;
-  }
-  
-  .titolo-sezione {
-    font-size: 20px;
-    letter-spacing: 10px;
-  }
-  
-  .titolo-card {
-    font-size: 20px;
-    letter-spacing: 10px;
-  }
+.campo-form {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
->>>>>>> bd7342ef0c8b5f015d7324f5e497c8d97f1b2be6
+
+.bottone-primario {
+    background-color: #000;
+    color: #fff;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
