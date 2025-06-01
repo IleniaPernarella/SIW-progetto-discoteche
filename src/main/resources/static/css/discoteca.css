@@ -1,0 +1,164 @@
+/* SEZIONE HERO */
+.sezione-hero {
+    position: relative;
+    height: 673px;
+    width: 100%;
+    /* Imposta il colore di sfondo */
+    background-color: #000000;
+    overflow: hidden;
+    /* Imposta il tipo di display del box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.immagine-sfondo-hero {
+    /* Posizionamento assoluto all'interno del contenitore padre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/img-sfondo.jpg');
+    background-size: cover;
+    background-position: center;
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 0;
+}
+
+.sovrapposizione-hero {
+    /* Posizionamento assoluto all'interno del contenitore padre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Imposta il colore di sfondo */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 1;
+}
+
+.sovrapposizione-header {
+    /* Posizionamento assoluto all'interno del contenitore padre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 114px;
+    /* Imposta il colore di sfondo */
+    background-color: rgba(255, 255, 255, 0.16);
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 2;
+}
+
+.discoteca-principale {
+    /* Imposta la dimensione del testo */
+    font-size: 64px;
+    letter-spacing: 55px;
+    text-transform: uppercase;
+    /* Definisce la spaziatura esterna */
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+    left: 40px;
+}
+
+.descrizione-hero {
+    /* Imposta la dimensione del testo */
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 836px;
+    /* Definisce la spaziatura esterna */
+    margin-left: 0;
+    /* Definisce la spaziatura esterna */
+    margin-right: auto;
+    text-align: left;
+    /* Definisce la spaziatura interna */
+    padding-left: 40px;
+    /* Definisce la spaziatura esterna */
+    margin-top: 16px;
+}
+
+/* SEZIONE EVENTI */
+.sezione-discoteche {
+    /* Imposta il colore di sfondo */
+    background-color: #383838;
+    /* Definisce la spaziatura interna */
+    padding: 60px 40px;
+    /* Definisce la spaziatura esterna */
+    margin-top: 0;
+}
+
+.titolo-sezione {
+    /* Imposta la dimensione del testo */
+    font-size: 36px;
+    letter-spacing: 55px;
+    text-align: center;
+    /* Definisce la spaziatura esterna */
+    margin-bottom: 60px;
+    /* Definisce la spaziatura interna */
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+
+.evento {
+    line-height: 1.6;
+    max-width: 836px;
+    /* Definisce la spaziatura esterna */
+    margin-left: 0;
+    /* Definisce la spaziatura esterna */
+    margin-right: auto;
+    text-align: left;
+    /* Definisce la spaziatura interna */
+    padding-left: 40px;
+    /* Definisce la spaziatura esterna */
+    margin: 0;
+    /* Definisce la spaziatura interna */
+    padding: 0;
+}
+
+.evento h4 {
+    /* Imposta la dimensione del testo */
+    font-size: 40px;
+    /* Imposta il colore del testo */
+    color: rgb(255, 255, 255);
+    /* Definisce la spaziatura esterna */
+    margin: 0 0 5px;
+}
+
+.evento p {
+    /* Imposta la dimensione del testo */
+    font-size: 20px;
+    /* Imposta il colore del testo */
+    color: rgb(255, 255, 255);
+    /* Definisce la spaziatura esterna */
+    margin: 0;
+    /* Definisce la spaziatura interna */
+    padding: 0;
+}
+
+.evento hr {
+    /* Definisce la spaziatura esterna */
+    margin-top: 40px;
+    /* Definisce la spaziatura esterna */
+    margin-bottom: 40px;
+}
+
+.contenuto-hero {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+}
+
+.contenuto-hero * {
+    position: relative;
+    z-index: 5;
+}
+
+.immagine-sfondo-hero,
+.sovrapposizione-hero {
+    pointer-events: none;
+}

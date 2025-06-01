@@ -4,11 +4,13 @@ import jakarta.validation.constraints.*;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Utente {
@@ -20,10 +22,12 @@ public class Utente {
 	@NotNull
 	private String nome;
 	@NotNull
-	private String password;
+	private String cognome;
 	@NotNull
 	private String email;
-	private String ruolo;
+	
+	
+	
 	
 	@OneToMany(mappedBy="gestore")
 	private List<Discoteca> discotecheGestite;
@@ -37,7 +41,8 @@ public class Utente {
 	@OneToMany(mappedBy="gestoreCreatore")
 	private List<CenaSpettacolo> ceneSpettacoloCreate;
 
-	
+	@OneToOne(mappedBy = "utente", cascade = CascadeType.ALL)
+    private Credentials credentials;
 	
 	
 	
@@ -57,12 +62,20 @@ public class Utente {
 		this.nome = nome;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getCognome() {
+		return cognome;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
 	}
 
 	public String getEmail() {
@@ -73,13 +86,6 @@ public class Utente {
 		this.email = email;
 	}
 
-	public String getRuolo() {
-		return ruolo;
-	}
-
-	public void setRuolo(String ruolo) {
-		this.ruolo = ruolo;
-	}
 
 	public List<Discoteca> getDiscotecheGestite() {
 		return discotecheGestite;
