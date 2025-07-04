@@ -33,26 +33,26 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute("utente") Utente user,
-                               BindingResult userBinding,
-                               @Valid @ModelAttribute("credentials") Credentials credentials,
-                               BindingResult credentialsBinding, @ModelAttribute("confermaPassword") String confermaPassword,
-                               Model model) {
-    	
-    	if(!credentials.getPassword().equals(confermaPassword)) {
-    		credentialsBinding.rejectValue("password", "error.password", "Le password non corrispondono");
-
-    	}
-    	
-    	
-        if (!userBinding.hasErrors() && !credentialsBinding.hasErrors()) {
-            userService.saveUser(user);
-            credentials.setUtente(user);
-            credentialsService.saveCredentials(credentials);
-            return "redirect:/login";
-        }
-        return "register";
+public String registerUser(@Valid @ModelAttribute("utente") Utente user,
+                           BindingResult userBinding,
+                           @Valid @ModelAttribute("credentials") Credentials credentials,
+                           BindingResult credentialsBinding,
+                           @ModelAttribute("confermaPassword") String confermaPassword,
+                           Model model) {
+    
+    if (!credentials.getPassword().equals(confermaPassword)) {
+        credentialsBinding.rejectValue("password", "error.password", "Le password non corrispondono");
     }
+
+    if (!userBinding.hasErrors() && !credentialsBinding.hasErrors()) {
+        userService.saveUser(user);
+        credentials.setUtente(user);
+        credentialsService.saveCredentials(credentials);
+        return "redirect:/login";
+    }
+    return "register";
+}
+
 
     @GetMapping("/login")
     public String showLoginForm() {

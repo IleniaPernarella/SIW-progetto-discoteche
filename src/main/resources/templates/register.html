@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -46,15 +45,13 @@
 
                 <label for="password" class="etichetta-campo">Password</label>
                 <input type="password" id="password" name="password" placeholder="Inserisci password" class="campo-form" required />
-				
-				<label for="confermaPassword" class="etichetta-campo">Conferma password</label>
-				<input type="password" id="confermaPassword" name="confermaPassword" placeholder="Conferna password" class="campo-form" required />
-				
-				<p th:if="${#fields.hasErrors('credentials.password')}" 
-								   th:errors="*{credentials.password}" 
-								   style="color: red; font-size: 14px;"></p>
-
-				
+                
+                <label for="confermaPassword" class="etichetta-campo">Conferma password</label>
+                <input type="password" id="confermaPassword" name="confermaPassword" placeholder="Conferma password" class="campo-form" required />
+                
+                <p th:if="${#fields.hasErrors('credentials.password')}" 
+                   th:errors="*{credentials.password}" 
+                   style="color: red; font-size: 14px;"></p>
 
                 <button type="submit" class="bottone-login-custom">Conferma</button>
             </form>

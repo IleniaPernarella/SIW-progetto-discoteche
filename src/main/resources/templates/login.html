@@ -25,49 +25,47 @@
         </div>
     </nav>
 
-	<!-- FORM LOGIN -->
-	<div class="contenuto-hero">
-	    <div class="titolo-bentornato">Bentornat* su</div>
-	    <h1 class="titolo-login">ITALODISCO</h1>
+    <!-- FORM LOGIN -->
+    <div class="contenuto-hero">
+        <div class="titolo-bentornato">Bentornat* su</div>
+        <h1 class="titolo-login">ITALODISCO</h1>
 
-	    <div class="form-container-login">
-	        <form th:action="@{/login}" method="post" class="form-login login-custom">
-	            <!-- Campo username -->
-				<label for="username" class="etichetta-campo">Username</label>
-	            <input type="text"
-	                   name="username"
-	                   placeholder="Inserisci username"
-	                   class="campo-form"
-	                   required
-	                   autocomplete="username" />
+        <div class="form-container-login">
+            <form th:action="@{/login}" method="post" class="form-login login-custom">
+                <!-- Campo username -->
+                <label for="username" class="etichetta-campo">Username</label>
+                <input type="text"
+                       name="username"
+                       placeholder="Inserisci username"
+                       class="campo-form"
+                       required
+                       autocomplete="username" />
 
-	            <!-- Campo password -->
-				<label for="password" class="etichetta-campo">Password</label>
-	            <input type="password"
-	                   name="password"
-	                   placeholder="Inserisci password"
-	                   class="campo-form"
-	                   required
-	                   autocomplete="current-password" />
+                <!-- Campo password -->
+                <label for="password" class="etichetta-campo">Password</label>
+                <input type="password"
+                       name="password"
+                       placeholder="Inserisci password"
+                       class="campo-form"
+                       required
+                       autocomplete="current-password" />
 
-	            <!-- Bottone invio -->
-	            <button type="submit" class="bottone-login-custom">Conferma</button>
-	        </form>
+                <!-- Bottone invio -->
+                <button type="submit" class="bottone-login-custom">Conferma</button>
+            </form>
 
-	        <!-- Link alla registrazione -->
-	        <div class="registrazione-link">
-	            Non hai un account? <a href="/register">Registrati qui</a>
-	        </div>
+            <!-- Link alla registrazione -->
+            <div class="registrazione-link">
+                Non hai un account? <a href="/register">Registrati qui</a>
+            </div>
 
-	        <!-- Messaggi dinamici (login errori / logout conferma) -->
-	        <div class="messaggi-login">
-	            <p th:if="${param.error}" style="color: red;">Username o password errati</p>
-	            <p th:if="${param.logout}" style="color: green;">Logout effettuato</p>
-	        </div>
-	    </div>
-	</div>
-
-
+            <!-- Messaggi dinamici (login errori / logout conferma) -->
+            <div class="messaggi-login">
+                <p th:if="${param.error}" style="color: red;">Username o password errati</p>
+                <p th:if="${param.logout}" style="color: green;">Logout effettuato</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- FOOTER -->
@@ -106,5 +104,3 @@
 
 </body>
 </html>
-
-
