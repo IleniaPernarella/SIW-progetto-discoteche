@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,8 +28,7 @@ public class Credentials {
     @JoinColumn(name = "utente_id")
     private Utente utente;
 
-	
-	
+
 	
 	public Long getId() {
 		return id;
@@ -68,6 +69,24 @@ public class Credentials {
 	public void setUtente(Utente utente) {
 		this.utente = utente;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(username);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Credentials other = (Credentials) obj;
+		return Objects.equals(username, other.username);
+	}
+	
 	
 	
 }

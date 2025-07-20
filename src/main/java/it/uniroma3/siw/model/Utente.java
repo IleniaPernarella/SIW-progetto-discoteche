@@ -3,6 +3,7 @@ package it.uniroma3.siw.model;
 import jakarta.validation.constraints.*;
 
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -117,6 +118,24 @@ public class Utente {
 
 	public void setCeneSpettacoloCreate(List<CenaSpettacolo> ceneSpettacoloCreate) {
 		this.ceneSpettacoloCreate = ceneSpettacoloCreate;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cognome, email, nome);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Utente other = (Utente) obj;
+		return Objects.equals(cognome, other.cognome) && Objects.equals(email, other.email)
+				&& Objects.equals(nome, other.nome);
 	}
 	
 	

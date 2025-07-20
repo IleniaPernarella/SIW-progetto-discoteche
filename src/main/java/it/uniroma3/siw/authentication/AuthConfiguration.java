@@ -44,6 +44,7 @@ public class AuthConfiguration {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/index", "/register", "/login", "/css/**", "/img/**","/discoteca/{id}").permitAll()
                 .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/evento/*/preferito").authenticated()
                 .requestMatchers("/admin/**").hasAuthority(ADMIN_ROLE)
                 .anyRequest().authenticated()
             )

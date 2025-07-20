@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Preferiti</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/preferiti.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout-preferiti">
+
+    <!-- NAV FISSA -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+            <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
+        </div>
+        <div class="menu-destra">
+            <div sec:authorize="isAuthenticated()">
+                <span class="voce-menu">Benvenut*, <span th:text="${#authentication.name}">Utente</span></span>
+                <div class="voce-menu pulsante-login" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+                <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+            </div>
+            <div sec:authorize="isAnonymous()">
+                <div class="voce-menu pulsante-login" onclick="location.href='/login'">LOGIN</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEZIONE PREFERITI -->
+    <section class="sezione-preferiti">
+        <div class="griglia-preferiti" th:if="${not #lists.isEmpty(preferiti)}">
+            <div class="card-preferito" th:each="pref : ${preferiti}">
+				<form th:action="@{'/preferito/' + ${pref.id} + '/rimuovi'}" method="post">
+				  <button type="submit" class="bottone-rimuovi" aria-label="Rimuovi dai preferiti">
+				    <i class="fa-solid fa-trash"></i>
+				  </button>
+				</form>
+                <img th:src="${pref.evento.discoteca.immagine}" alt="immagine discoteca">
+				<div class="nome-discoteca" th:text="${pref.evento.discoteca.nome}">Nome Discoteca</div>
+                <div class="contenuto-card">
+                    <h3 th:text="${pref.evento.nome}">Nome Evento</h3>
+                    <p th:text="${#temporals.format(pref.evento.dataOra, 'dd/MM/yyyy HH:mm')}">Data</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="messaggio-vuoto" th:if="${#lists.isEmpty(preferiti)}">
+            <p>Non hai ancora aggiunto eventi ai preferiti.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="piè-di-pagina">
+        <div class="contenuto-footer">
+            <div class="marchio-footer">
+                <h4>ITALODISCO</h4>
+                <p>©2025 - ItaloDisco</p>
+                <p>P.IVA 893263</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>CONTATTI</h4>
+                <p>-39 542 928 462</p>
+                <p>italodisco@gmail.com</p>
+                <p>pec@tmp.it</p>
+                <p>FAX 593 039 0293</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>INFORMAZIONI</h4>
+                <p>Chi siamo</p>
+                <p>Prezzi</p>
+                <p>Lavora con noi</p>
+                <p>Licenza</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>SOCIAL</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>TikTok</p>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Discord</p>
+            </div>
+            <div class="partner-footer">
+                <h4>PARTNER</h4>
+                <div class="loghi-partner">
+                    <div class="logo-partner"></div>
+                    <div class="logo-partner"></div>
+                    <div class="logo-partner"></div>
+                    <div class="logo-partner"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -48,22 +48,34 @@
         </div>
     </section>
 
-    <!-- SEZIONE DISCOTECHE CON ELENCO DI EVENTI -->
-    <section class="sezione-discoteche">
-        <h2 class="titolo-sezione">EVENTI</h2>
+	<!-- SEZIONE DISCOTECHE CON ELENCO DI EVENTI -->
+	<section class="sezione-discoteche">
+	    <h2 class="titolo-sezione">EVENTI</h2>
 
-        <div th:if="${#lists.isEmpty(eventi)}">
-            <h1 class="evento">Non ci sono eventi per questa discoteca</h1>
-        </div>
+	    <div th:if="${#lists.isEmpty(eventi)}">
+	        <h1 class="evento">Non ci sono eventi per questa discoteca</h1>
+	    </div>
 
-        <div th:each="evento : ${eventi}" class="evento">
-            <h4 class="descrizione-hero" th:text="${evento.nome}">Nome Evento</h4>
-            <p class="descrizione-hero" th:text="${evento.descrizione}">Descrizione Evento</p>
-            <p class="descrizione-hero" th:text="${evento.dataOra}">Data e Ora Evento</p>
-            <p class="descrizione-hero" th:text="${evento.prezzo} + ' €'">Prezzo Evento</p>
-            <hr />
-        </div>
-    </section>
+	    <div class="griglia-eventi">
+	        <div th:each="evento : ${eventi}" class="evento-card">
+	            <h4 class="titolo-evento" th:text="${evento.nome}">Nome Evento</h4>
+	            <p th:text="${evento.descrizione}">Descrizione Evento</p>
+				<p>
+				           <span class="etichetta">Data:</span>
+				           <span th:text="${#temporals.format(evento.dataOra, 'dd/MM/yyyy HH:mm')}">Data e Ora</span>
+				       </p>
+
+				       <p>
+				           <span class="etichetta">Prezzo:</span>
+				           <span th:text="${evento.prezzo} + ' €'">Prezzo</span>
+				       </p>
+
+	            <form th:action="@{'/evento/' + ${evento.id} + '/preferito'}" method="post">
+	                <button type="submit" class="bottone-preferito">Aggiungi ai preferiti ❤</button>
+	            </form>
+	        </div>
+	    </div>
+	</section>
 
     <!-- PIÈ DI PAGINA CON LAYOUT A GRIGLIA -->
     <footer class="piè-di-pagina">
