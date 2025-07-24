@@ -1,0 +1,146 @@
+/* ========== STILE GENERALE ========== */
+body {
+    font-family: 'Geologica', sans-serif;
+    background-color: #181818;
+    color: white;
+}
+
+/* ========== NAVIGAZIONE ========== */
+.navigazione-principale {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.voce-menu {
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    letter-spacing: 3px;
+}
+
+.voce-menu:hover {
+    color: #00ffff;
+}
+
+/* ========== CARD ADMIN ========== */
+.card-admin {
+    background-color: #1f1f1f;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-admin:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 4px 4px #00ffff;
+}
+
+.card-admin h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.card-admin p {
+    font-size: 16px;
+    color: #dcdcdc;
+}
+
+/* ========== GRIGLIA ADMIN ========== */
+.griglia-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+    padding: 40px;
+}
+
+/* ========== PULSANTI GESTIONALI ========== */
+.gruppo-bottoni {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 16px;
+    border-radius: 32px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Pulsante modifica */
+button:nth-child(1) {
+    background-color: #00ffff;
+    color: #000000;
+}
+
+/* Pulsante elimina */
+button:nth-child(2) {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+/* Pulsante visualizza eventi */
+button:nth-child(3) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* ========== FORM ADMIN ========== */
+.form-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.form-admin input,
+.form-admin textarea {
+    padding: 1rem;
+    background-color: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+}
+
+.form-admin textarea {
+    resize: vertical;
+}
+
+.bottone-admin {
+    background-color: rgba(255,255,255,0.5);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 1rem;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin: 0 auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bottone-admin:hover {
+    background-color: #00ffff;
+    color: black;
+    transform: translateY(-2px);
+}

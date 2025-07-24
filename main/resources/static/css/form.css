@@ -1,0 +1,84 @@
+/* ========== FORM GENERICO ========== */
+.form-generico {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
+/* ========== LABEL / ETICHETTA ========== */
+.form-generico label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: -15px;
+    margin-left: 6px;
+    transition: color 0.2s ease;
+}
+
+/* ========== CAMPO INPUT / TEXTAREA ========== */
+.form-generico input,
+.form-generico textarea,
+.form-generico select {
+    background-color: rgba(255, 255, 255, 0.07);
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+    color: white;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.form-generico input:focus,
+.form-generico textarea:focus,
+.form-generico select:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px #04ffff;
+}
+
+/* ========== PULSANTE CONFERMA ========== */
+.bottone-form {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 1rem;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin: 0 auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bottone-form:hover {
+    background-color: #04ffff;
+    color: black;
+    transform: translateY(-2px);
+}
+
+/* ========== MESSAGGIO DI ERRORE / FEEDBACK ========== */
+.messaggio-form {
+    font-size: 14px;
+    color: #ff5b5b;
+    margin-top: -10px;
+    margin-left: 6px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media screen and (max-width: 480px) {
+    .form-generico {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .bottone-form {
+        width: 100%;
+    }
+}

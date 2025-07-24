@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Scrivi una Recensione</title>
+	<link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/recensione.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVIGAZIONE -->
+<nav class="navigazione-principale">
+    <div class="menu-sinistra">
+        <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
+    </div>
+</nav>
+
+<!-- FORM RECENSIONE -->
+<section class="contenuto-recensione">
+    <h1 th:text="'Lascia una recensione per: ' + ${preferito.evento.nome}"></h1>
+
+    <form th:action="@{'/preferito/' + ${preferito.id} + '/recensione'}"
+          th:object="${recensione}" method="post" class="form-recensione">
+
+		  <label for="testo">Testo recensione</label>
+		  <textarea id="testo" th:field="*{testo}" rows="4" placeholder="Scrivi la tua esperienza..." required></textarea>
+
+		  <label for="valutazione">Valutazione (1-5)</label>
+		  <input type="number" id="valutazione" th:field="*{valutazione}" min="1" max="5" />
+
+        <button type="submit" class="bottone-recensione">Invia Recensione</button>
+    </form>
+</section>
+
+</body>
+</html>

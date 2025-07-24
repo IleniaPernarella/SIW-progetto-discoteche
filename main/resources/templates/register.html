@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrazione - ItaloDisco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<section class="sezione-hero">
+    <div class="immagine-sfondo-hero"></div>
+    <div class="sovrapposizione-hero"></div>
+    <div class="sovrapposizione-header"></div>
+
+    <!-- NAV -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        </div>
+    </nav>
+
+    <div class="contenuto-hero">
+        <div class="titolo-bentornato">Registrati su</div>
+        <h1 class="titolo-login">ITALODISCO</h1>
+
+        <div class="form-container-login">
+            <!-- ✅ FORM CORRETTO CON OGGETTO CREDENTIALS -->
+            <form th:action="@{/register}" method="POST" th:object="${credentials}" class="form-login login-custom">
+                
+                <label class="etichetta-campo">Nome</label>
+                <input type="text" th:field="*{utente.nome}" placeholder="Inserisci nome" class="campo-form" required />
+
+                <label class="etichetta-campo">Cognome</label>
+                <input type="text" th:field="*{utente.cognome}" placeholder="Inserisci cognome" class="campo-form" required />
+
+                <label class="etichetta-campo">Email</label>
+                <input type="email" th:field="*{utente.email}" placeholder="Inserisci e-mail" class="campo-form" required />
+
+                <label class="etichetta-campo">Username</label>
+                <input type="text" th:field="*{username}" placeholder="Inserisci username" class="campo-form" required />
+
+                <label class="etichetta-campo">Password</label>
+                <input type="password" th:field="*{password}" placeholder="Inserisci password" class="campo-form" required />
+
+                <!-- ✅ CAMPO CONFERMA SOLO VISIVO -->
+                <label class="etichetta-campo">Conferma Password</label>
+                <input type="password" name="confermaPassword" placeholder="Conferma password" class="campo-form" required />
+
+                <!-- ✅ Campo opzionale per codice admin -->
+                <label class="etichetta-campo">Codice Admin (opzionale)</label>
+                <input type="radio" name="ADMIN" th:field="*{role}" value="ADMIN" id="radioOne" class="campo-form" />
+				<input type="radio" name="UTENTE" th:field="*{role}" value="UTENTE" id="radioTwo"  class="campo-form" />
+
+
+                <!-- VALIDAZIONE PASSWORD -->
+                <p th:if="${#fields.hasErrors('password')}" 
+                   th:errors="*{password}" 
+                   style="color: red; font-size: 14px;"></p>
+
+                <button type="submit" class="bottone-login-custom">Conferma</button>
+            </form>
+
+            <div class="login-link">
+                <p>Hai già un account? <a th:href="@{/login}">Accedi qui</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="piè-di-pagina">
+    <div class="contenuto-footer">
+        <div class="marchio-footer">
+            <h4>ITALODISCO</h4>
+            <p>©2025 - ItaloDisco</p>
+            <p>P.IVA 893263</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>CONTATTI</h4>
+            <p>-39 542 928 462</p>
+            <p>italodisco@gmail.com</p>
+            <p>pec@tmp.it</p>
+            <p>FAX 593 039 0293</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>INFORMAZIONI</h4>
+            <p>Chi siamo</p>
+            <p>Prezzi</p>
+            <p>Lavora con noi

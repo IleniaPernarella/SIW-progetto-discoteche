@@ -1,0 +1,179 @@
+/* HERO LOGIN */
+.sezione-hero {
+    position: relative;
+    height: 673px;
+    width: 100%;
+    /* Imposta il colore di sfondo */
+    background-color: #000000;
+    overflow: hidden;
+    /* Imposta il tipo di display del box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.immagine-sfondo-hero {
+    /* Posizionamento assoluto all'interno del contenitore padre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/img-sfondo.jpg');
+    background-size: cover;
+    background-position: center;
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 0;
+}
+
+.sovrapposizione-hero {
+    /* Posizionamento assoluto all'interno del contenitore padre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Imposta il colore di sfondo */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 1;
+}
+
+.sovrapposizione-header {
+    /* Posizionamento assoluto all'interno del contenitore padre */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 114px;
+    /* Imposta il colore di sfondo */
+    background-color: rgba(255, 255, 255, 0.16);
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 2;
+}
+
+/* CONTENUTO */
+.titolo-bentornato {
+    /* Imposta la dimensione del testo */
+    font-size: 20px;
+    font-weight: 400;
+    /* Definisce la spaziatura esterna */
+    margin-bottom: 10px;
+    /* Definisce la spaziatura esterna */
+    margin-top: 80px;
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 2;
+    position: relative;
+    /* Imposta il colore del testo */
+    color: white;
+}
+
+.titolo-login {
+    /* Imposta la dimensione del testo */
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 15px;
+    /* Definisce la spaziatura esterna */
+    margin-bottom: 10px;
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 2;
+    position: relative;
+    /* Imposta il colore del testo */
+    color: white;
+}
+
+.form-container-login {
+    /* Definisce la spaziatura interna */
+    padding: 2rem;
+    /* Applica bordi arrotondati */
+    border-radius: 20px;
+    max-width: 450px;
+    /* Definisce la spaziatura esterna */
+    margin: 0 auto;
+    /* Definisce la profondità del livello dell'elemento */
+    z-index: 2;
+    position: relative;
+}
+
+.form-login.login-custom {
+    /* Imposta il tipo di display del box */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+	
+}
+
+.login-custom .campo-form {
+    /* Imposta il colore di sfondo */
+    background-color: rgba(255, 255, 255, 0.16);
+    /* Imposta il colore del testo */
+    color: #000;
+    border: none;
+    font-weight: 500;
+    /* Definisce la spaziatura interna */
+    padding: 1rem;
+    /* Imposta la dimensione del testo */
+    font-size: 1rem;
+    /* Applica bordi arrotondati */
+    border-radius: 10px;
+   
+	
+	
+}
+
+.bottone-login-custom {
+    /* Imposta il colore di sfondo */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Imposta il colore del testo */
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    /* Imposta la dimensione del testo */
+    font-size: 20px;
+    /* Definisce la spaziatura interna */
+    padding: 1rem;
+    /* Applica bordi arrotondati */
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    /* Definisce la spaziatura esterna */
+    margin: 0 auto;
+}
+
+.bottone-login-custom:hover {
+    /* Imposta il colore di sfondo */
+    background-color: rgba(128, 255, 255, 0.7);
+	transform: translateY(-2px);
+}
+
+.etichetta-campo {
+    /* Imposta il colore del testo */
+    color: rgba(255, 255, 255, 0.8);
+    /* Imposta la dimensione del testo */
+    font-size: 16px;
+    font-weight: 100;
+    /* Definisce la spaziatura esterna */
+    margin-bottom: -23px;
+    /* Definisce la spaziatura esterna */
+    margin-left: 2px;
+    text-align: left;
+    width: 100%;
+}
+
+.registrazione-link {
+    /* Imposta la dimensione del testo */
+    font-size: 14px;
+    /* Imposta il colore del testo */
+    color: white;
+    text-align: center;
+    /* Definisce la spaziatura esterna */
+    margin-top: 1rem;
+}
+
+.registrazione-link a {
+    /* Imposta il colore del testo */
+    color: #00ffff;
+   
+}

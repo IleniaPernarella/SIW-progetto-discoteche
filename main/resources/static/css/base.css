@@ -1,0 +1,130 @@
+
+/* =============== RESET GENERALE =============== */
+/* Applica un reset ai margini e padding e imposta il box model */
+* {
+    margin: 0; /* Rimuove margini predefiniti */
+    padding: 0; /* Rimuove padding predefiniti */
+    box-sizing: border-box; /* Include padding e bordi nel calcolo delle dimensioni */
+}
+
+
+
+
+/* Stili di base per il corpo della pagina */
+body {
+    font-family: 'Geologica', sans-serif; /* Font principale */
+    color: #ffffff; /* Colore del testo */
+    background-color: #ffffff; /* Sfondo pagina */
+    position: relative; /* Posizionamento relativo per elementi interni */
+    min-height: 100vh; /* Altezza minima pari alla viewport */
+    overflow-x: hidden; /* Nasconde scroll orizzontale */
+}
+
+/* =============== NAVIGAZIONE =============== */
+/* Stile per la barra di navigazione */
+.navigazione-principale {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+.menu-sinistra {
+    display: flex;
+    align-items: center;
+}
+
+/* Voci del menu */
+.voce-menu {
+    font-size: 20px;
+    letter-spacing: 13px;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-right: 20px;
+}
+
+.voce-menu:hover {
+    color: #04ffff;
+}
+
+/* Bottone login */
+.pulsante-login {
+    background-color: rgba(255, 255, 255, 0.39);
+    padding: 5px 15px;
+    border-radius: 32px;
+    font-size: 13px;
+    letter-spacing: 13px;
+    transition: transform 0.2s;
+}
+
+.pulsante-login:hover {
+    transform: translateY(-2px);
+}
+
+/* =============== FOOTER =============== */
+/* Stile del piè di pagina */
+.piè-di-pagina {
+    background-color: #212121;
+    padding: 60px 40px;
+    margin-top: -20px;
+    color: #fff;
+}
+
+/* Layout a griglia nel footer */
+.contenuto-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contenuto-footer > div {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* Titoli delle sezioni nel footer */
+.marchio-footer h4,
+.sezione-footer h4,
+.partner-footer h4 {
+    font-size: 18px;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+/* Paragrafi nelle varie sezioni del footer */
+.sezione-footer p,
+.marchio-footer p,
+.partner-footer p {
+    margin: 4px 0;
+    font-size: 15px;
+}
+
+/* Sezione loghi partner nel footer */
+.loghi-partner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.logo-partner {
+    width: 36px;
+    height: 36px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.logo-partner:hover {
+    transform: scale(1.1);
+}

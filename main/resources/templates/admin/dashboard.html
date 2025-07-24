@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #101010;
+            color: #eee;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            color: #00ffe0;
+            margin-bottom: 1rem;
+        }
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,255,255,0.1);
+        }
+        .card h2 {
+            font-size: 2rem;
+            margin: 0;
+            color: #00ffe0;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            background-color: #00ffe0;
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            background-color: #00cccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👩‍💼 Pannello Amministratore</h1>
+
+        <div class="stats">
+            <div class="card">
+                <h2 th:text="${numEventi}">0</h2>
+                <p>Eventi totali</p>
+            </div>
+            <div class="card">
+                <h2 th:text="${numDiscoteche}">0</h2>
+                <p>Discoteche registrate</p>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a th:href="@{/admin/discoteca/lista}">🔧 Gestisci Discoteche</a>
+            <a th:href="@{/admin/evento/discoteca/1}">🎛 Gestisci Eventi</a>
+        </div>
+    </div>
+</body>
+</html>

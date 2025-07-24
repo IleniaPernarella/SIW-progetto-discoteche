@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventi Discoteca - ItaloDisco</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navigazione-principale">
+    <div class="menu-sinistra">
+        <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        <div class="voce-menu" onclick="location.href='/admin/discoteca/lista'">DISCOTECHE</div>
+        <div class="voce-menu" th:onclick="|location.href='/admin/evento/nuovo/' + ${discoteca.id}|">NUOVO EVENTO</div>
+    </div>
+</nav>
+
+<!-- LISTA EVENTI -->
+<section class="contenuto-admin">
+    <h1 th:text="'Eventi per: ' + ${discoteca.nome}"></h1>
+
+    <div class="griglia-admin" th:if="${not #lists.isEmpty(eventi)}">
+        <div class="card-admin" th:each="evento : ${eventi}">
+            <h3 th:text="${evento.nome}">Nome Evento</h3>
+            <p th:text="${evento.descrizione}">Descrizione</p>
+            <p>
+                <strong>Data:</strong>
+                <span th:text="${#temporals.format(evento.dataOra, 'dd/MM/yyyy HH:mm')}">Data</span>
+            </p>
+            <p>
+                <strong>Prezzo:</strong>
+                <span th:text="${evento.prezzo} + ' €'">Prezzo</span>
+            </p>
+
+			<div class="gruppo-bottoni" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+			    <button th:onclick="|location.href='/admin/discoteca/' + ${discoteca.id} + '/modifica'|">Modifica</button>
+
+			    <form th:action="@{'/admin/discoteca/' + ${discoteca.id} + '/elimina'}" method="post" style="display:inline;">
+			        <button type="submit" style="background-color: red;">Elimina</button>
+			    </form>
+
+			    <button th:onclick="|location.href='/admin/evento/discoteca/' + ${discoteca.id}|">
+			        Visualizza Eventi
+			    </button>
+			</div>
+        </div>
+    </div>
+
+    <p th:if="${#lists.isEmpty(eventi)}">Nessun evento registrato per questa discoteca.</p>
+</section>
+
+</body>
+</html>

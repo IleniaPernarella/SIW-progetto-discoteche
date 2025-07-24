@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <meta charset="UTF-8">
+    <title>Login - ItaloDisco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<!-- SEZIONE HERO -->
+<section class="sezione-hero">
+    <div class="immagine-sfondo-hero"></div>
+    <div class="sovrapposizione-hero"></div>
+    <div class="sovrapposizione-header"></div>
+
+    <!-- NAVIGAZIONE -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+            <div class="voce-menu" onclick="location.href='/register'">REGISTRATI</div>
+        </div>
+    </nav>
+
+    <!-- FORM LOGIN -->
+    <div class="contenuto-hero">
+        <div class="titolo-bentornato">Bentornat* su</div>
+        <h1 class="titolo-login">ITALODISCO</h1>
+
+        <div class="form-container-login">
+            <form th:action="@{/login}" method="post" class="form-login login-custom">
+                <!-- Campo username -->
+                <label for="username" class="etichetta-campo">Username</label>
+                <input type="text"
+                       name="username"
+                       placeholder="Inserisci username"
+                       class="campo-form"
+                       required
+                       autocomplete="username" 
+					   autofocus />
+
+                <!-- Campo password -->
+                <label for="password" class="etichetta-campo">Password</label>
+                <input type="password"
+                       name="password"
+                       placeholder="Inserisci password"
+                       class="campo-form"
+                       required
+                       autocomplete="current-password" />
+
+                <!-- Bottone invio -->
+                <button type="submit" class="bottone-login-custom">Conferma</button>
+            </form>
+
+            <!-- Link alla registrazione -->
+            <div class="registrazione-link">
+                Non hai un account? <a href="/register">Registrati qui</a>
+            </div>
+
+            <!-- Messaggi dinamici (login errori / logout conferma) -->
+            <div class="messaggi-login">
+                <p th:if="${param.error}" style="color: red;">Username o password errati</p>
+                <p th:if="${param.logout}" style="color: green;">Logout effettuato</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="piè-di-pagina">
+    <div class="contenuto-footer">
+        <div class="marchio-footer">
+            <h4>ITALODISCO</h4>
+            <p>©2025 - ItaloDisco</p>
+            <p>P.IVA 893263</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>CONTATTI</h4>
+            <p>-39 542 928 462</p>
+            <p>italodisco@gmail.com</p>
+            <p>pec@tmp.it</p>
+            <p>FAX 593 039 0293</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>INFORMAZIONI</h4>
+            <p>Chi siamo</p>
+            <p>Prezzi</p>
+            <p>Lavora con noi</p>
+            <p>Licenza</p>
+        </div>
+        <div class="sezione-footer">
+            <h4>SOCIAL</h4>
+            <p>Facebook</p>
+            <p>Instagram</p>
+            <p>TikTok</p>
+            <p>LinkedIn</p>
+            <p>YouTube</p>
+            <p>Discord</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Le mie recensioni</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/utente.css}">
+</head>
+<body>
+
+<nav class="navigazione-principale">
+    <div class="menu-sinistra">
+        <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
+        <div class="voce-menu" onclick="location.href='/utente/recensioni'">LE MIE RECENSIONI</div>
+    </div>
+    <div class="menu-destra">
+        <div sec:authorize="isAuthenticated()">
+            <span class="voce-menu">Benvenut*, <span th:text="${#authentication.name}">Utente</span></span>
+            <div class="voce-menu pulsante-login" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+            <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+        </div>
+    </div>
+</nav>
+
+<section class="contenuto-utente">
+    <h1>Le tue recensioni</h1>
+
+    <div th:if="${not #lists.isEmpty(recensioni)}" class="griglia-utente">
+        <div class="card-utente" th:each="rec : ${recensioni}">
+            <h3 th:text="${rec.preferito.evento.nome}">Nome Evento</h3>
+            <p th:text="'Discoteca: ' + ${rec.preferito.evento.discoteca.nome}"></p>
+            <p th:text="'Data evento: ' + ${#temporals.format(rec.preferito.evento.dataOra, 'dd/MM/yyyy HH:mm')}"></p>
+            <p th:text="${rec.testo}">Testo recensione</p>
+        </div>
+    </div>
+
+    <p th:if="${#lists.isEmpty(recensioni)}">Non hai ancora scritto recensioni.</p>
+</section>
+
+</body>
+</html>

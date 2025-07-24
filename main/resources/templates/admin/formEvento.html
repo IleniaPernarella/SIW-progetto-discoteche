@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Evento - ItaloDisco</title>
+	<link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navigazione-principale">
+    <div class="menu-sinistra">
+        <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        <div class="voce-menu" onclick="location.href='/admin/discoteca/lista'">DISCOTECHE</div>
+    </div>
+</nav>
+
+<!-- FORM EVENTO -->
+<section class="contenuto-admin">
+    <h1 th:text="${evento.id == null ? 'Nuovo Evento' : 'Modifica Evento'}"></h1>
+
+    <form th:action="@{${evento.id == null} ? '/admin/evento/salva' : '/admin/evento/' + ${evento.id} + '/modifica'}"
+          th:object="${evento}" method="post" class="form-admin">
+
+        <!-- Campi Evento -->
+        <label for="nome">Nome Evento</label>
+        <input type="text" id="nome" th:field="*{nome}" required />
+
+        <label for="descrizione">Descrizione</label>
+        <textarea id="descrizione" th:field="*{descrizione}" rows="3"></textarea>
+
+        <label for="dataOra">Data e Ora</label>
+        <input type="datetime-local" id="dataOra" th:field="*{dataOra}" required />
+
+        <label for="prezzo">Prezzo (€)</label>
+        <input type="number" step="0.01" th:field="*{prezzo}" required />
+
+        <!-- Discoteca associata -->
+        <label for="discoteca">Discoteca</label>
+        <input type="text" id="discoteca" th:value="${evento.discoteca.nome}" disabled />
+
+        <input type="hidden" th:field="*{discoteca}" />
+
+        <button type="submit" class="bottone-admin">Conferma</button>
+    </form>
+</section>
+
+</body>
+</html>

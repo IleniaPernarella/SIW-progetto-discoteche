@@ -1,0 +1,66 @@
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Piper', 'Locale all’avanguardia con impianti audio e luci LED di ultima generazione. Ospita DJ internazionali e serate a tema con effetti speciali immersivi.', 'Via delle Stelle 12, Roma', '../img/piper.jpg', NULL);
+
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Qube', 'Discoteca su tre livelli con atmosfera sofisticata e contemporanea. Offre musica live, cocktail d’autore e aree VIP per eventi esclusivi.', 'Via di Portonaccio 212, Roma', '../img/qube.jpg', NULL);
+
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Room 26', 'Locale underground celebre per la sua programmazione techno e house. Dotato di sound system professionale e luci stroboscopiche.', 'Piazza Guglielmo Marconi 31, Roma', '../img/room26.jpg', NULL);
+
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Spazio 900', 'Discoteca spaziosa con pista da ballo, terrazza esterna e serate con animazione e DJ set nazionali. Una delle location più amate della capitale.', 'Piazza Guglielmo Marconi 26, Roma', '../img/spazio900.jpg', NULL);
+
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Jolie', 'Storico locale romano, noto per le serate karaoke e revival. Ambiente accogliente con clientela variegata e feste a tema durante il weekend.', 'Via Appia Nuova 88, Roma', '../img/jolie.jpg', NULL);
+
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Luna Club', 'Discoteca futuristica con soffitto a LED interattivo e spettacoli visuali sincronizzati con la musica. Offre drink molecolari e zona chill-out panoramica.', 'Via di Monte Testaccio 67, Roma', '../img/lunaclub.jpg', NULL);
+
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('The Groove', 'Locale alternativo ricavato in un ex capannone industriale. Propone musica elettronica e techno sperimentale, con performance visual e light-show.', 'Via Casilina Vecchia 42, Roma', '../img/thegroove.jpg', NULL);
+
+INSERT INTO discoteca (nome, descrizione, indirizzo, immagine, id_gestore) VALUES('Euphoria', 'Discoteca glamour nel cuore di Roma, con design lussuoso, pista LED e servizio bottle service. Famosa per i party a tema e gli eventi privati.', 'Via del Tritone 118, Roma', '../img/euphoria.jpg', NULL);
+
+
+
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Neon Party', 'Preparati a vivere una notte di pura energia al Piper con il Neon Party: un’esplosione di colori fluo, gadget luminosi e effetti UV che accendono ogni angolo della pista. In consolle, un DJ internazionale guiderà il pubblico con una selezione di house ed electro ad alto impatto visivo. Dress code consigliato: bianco o colori fosforescenti per risplendere sotto le luci al neon.', '2025-06-15 22:00:00', 25.00, 1);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Retro Night', 'Un viaggio indimenticabile negli anni ’80 al Piper, dove la musica è protagonista. Vinili originali, scenografie vintage, proiezioni retrò e cocktail old school ti catapulteranno in un’atmosfera d’altri tempi. La pista si trasformerà in una discoteca d’epoca con luci stroboscopiche e balli travolgenti: abiti a tema benvenuti!', '2025-06-22 21:00:00', 20.00, 1);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Galaxy Experience', 'Vivi un’esperienza multisensoriale al Galaxy Experience: la pista del Piper si trasforma in un universo interstellare, con proiezioni galattiche a 360°, luci laser sincronizzate e suoni cosmic-house curati da artisti visivi e DJ elettronici. Drink molecolari e corner tematici renderanno l’esperienza ancora più immersiva.', '2025-07-05 23:00:00', 28.00, 1);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Jazz & Wine', 'Un’elegante serata nel cuore del Qube con il meglio del jazz dal vivo, accompagnata da una raffinata degustazione di vini selezionati da un sommelier professionista. La sala lounge sarà allestita in stile art déco, creando l’ambiente perfetto per gustare ogni nota musicale e ogni calice di vino pregiato.', '2025-06-12 20:30:00', 30.00, 2);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Electro Elegance', 'Un evento esclusivo che fonde classe e avanguardia. “Electro Elegance” porta nella main hall del Qube un DJ set deep & minimal house accompagnato da performance visuali su maxi schermo e cocktail creativi serviti da mixologist premiati. L’ambiente sarà sofisticato, con luci soffuse, tappeti rossi e aree VIP dedicate.', '2025-06-21 22:00:00', 32.00, 2);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Golden Night', 'Una notte scintillante dove l’eleganza incontra la festa: “Golden Night” è l’evento del Qube dedicato al lusso e al glamour. Dress code rigorosamente dorato, ambiente illuminato da luci calde e specchi dorati, DJ set con musica selezionata tra house e nu disco. A mezzanotte, spettacolo pirotecnico indoor a tema “gold rain”.', '2025-07-06 22:30:00', 35.00, 2);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Techno Marathon', '12 ore ininterrotte di musica techno underground, curate da alcuni dei DJ più rispettati della scena europea. L’impianto audio Funktion-One di Room 26 renderà ogni beat un’esperienza fisica, immersa in un ambiente minimal-industriale con giochi di luce dinamici, visual mapping e chill zone laterali per il recupero energetico.', '2025-06-29 23:00:00', 35.00, 3);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Dark Frequencies', 'Una notte dedicata ai suoni più profondi della techno berlinese: bassi scuri, loop ipnotici e atmosfere cupe in perfetta sintonia con il design essenziale di Room 26. Ospiti internazionali suoneranno b2b fino all’alba, con effetti visivi monocromatici e installazioni luminose minimaliste.', '2025-07-13 00:00:00', 33.00, 3);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Karaoke Night', 'Un classico imperdibile al Jolie: il palco è tuo! Karaoke Night accoglie cantanti improvvisati e veterani del microfono per una serata divertente e spensierata. Oltre 1000 brani tra cui scegliere, drink in promozione e premi per le performance più applaudite. Serata condotta da uno speaker radiofonico d’eccezione.', '2025-06-08 21:00:00', 10.00, 5);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Serata Latina', 'Preparati a ballare senza sosta con la Serata Latina del Jolie: salsa, bachata, merengue e reggaeton mixati dai migliori DJ latini di Roma. Lezione gratuita di ballo all’inizio della serata, open bar tropicale e animazione caliente. Atmosfera colorata e coinvolgente per una notte da ricordare.', '2025-06-14 22:00:00', 18.00, 5);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Back to 2000', 'Un party nostalgia dedicato alla musica pop, dance e rock dei primi anni 2000. Dal revival di Britney Spears ai successi degli Articolo 31, il Jolie ti farà rivivere le colonne sonore di un decennio indimenticabile. Photo booth, gadget a tema e drink “millennial style”.', '2025-07-04 21:30:00', 15.00, 5);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Stellar Beats', 'L’evento firmato Luna Club che ti porta oltre l’atmosfera terrestre: “Stellar Beats” fonde suoni futuristici, bassi spaziali e ambienti visivi ispirati alla galassia. La pista sarà illuminata da un tetto LED a simulazione celeste, mentre performer sospesi e proiezioni in realtà aumentata trasporteranno il pubblico in un viaggio sonoro e visivo interstellare.', '2025-07-12 23:00:00', 30.00, 6);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Molecular Night', 'Un party esperienziale dove mixology, scienza e musica si incontrano. Drink molecolari creati live dai bartender, atmosfera luminosa e futuristica con effetti a nebbia secca e installazioni in vetro e acciaio. In consolle, DJ specializzati in electro chill, techno ambient e future garage, perfetti per una notte raffinata ma intensa.', '2025-07-19 22:30:00', 35.00, 6);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Industrial Rave', 'The Groove apre le porte al suo evento più radicale: “Industrial Rave”. Un capannone trasformato in una cattedrale della techno, con impianto acustico brutalista, laser rossi pulsanti e VJ set a tema distopico. Il pubblico verrà guidato in un’esperienza underground autentica, senza sosta, fino all’alba.', '2025-07-06 23:00:00', 28.00, 7);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Visual Noise', 'Un evento d’avanguardia dove la musica elettronica si fonde con l’arte digitale. VJ internazionali presenteranno installazioni visive interattive mentre in consolle si alterneranno artisti del panorama glitch, IDM e techno sperimentale. Il dancefloor sarà immerso in mapping architetturale e impulsi di colore sincronizzati al beat.', '2025-07-20 22:00:00', 26.00, 7);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Velvet Night', 'Una notte elegante e sensuale nella cornice lussuosa di Euphoria. “Velvet Night” è un evento esclusivo con dress code nero e rosso, musica house melodica e servizio bottle service in lounge private. L’illuminazione soft e l’arredamento in velluto daranno vita a un’atmosfera intima e raffinata, perfetta per chi cerca classe e ritmo.', '2025-07-13 22:00:00', 40.00, 8);
+INSERT INTO evento (nome, descrizione, data_ora, prezzo, id_discoteca) VALUES('Summer Gala', 'Il party estivo più atteso della capitale arriva da Euphoria. Un gala tra luci dorate, abiti eleganti e DJ internazionali che alternano deep house, funk e disco. L’evento prevede ingresso con drink di benvenuto, area fotografica in terrazza, open bar premium e spettacoli con danzatrici LED e bolle luminose.', '2025-07-27 21:00:00', 45.00, 8);
+
+
+
+
+INSERT INTO utente (nome, cognome,email) VALUES ('Mario', 'Rossi','mario@email.com');
+INSERT INTO utente (nome, cognome, email) VALUES ('Bea', 'Mulas', 'bea@email.com');
+INSERT INTO utente (nome, cognome, email) VALUES ('Lucia', 'Verdi', 'lucia@email.com');
+INSERT INTO utente (nome, cognome, email) VALUES ('Marco', 'Bianchi', 'marco@email.com');
+INSERT INTO credentials (username, password, role, utente_id) VALUES ('marco', '$2a$10$3EoRAbtVRR2d5.5A1o1juuV1CfR1q/HqEy9jglRvI1.yz1FJUEeC2', 'UTENTE', 4); -- password: marco123
+INSERT INTO credentials (username, password, role, utente_id) VALUES ('admin', '$2a$10$X1xU3BzRjRzGkA5Et4TTIexYZzWx2X./i5IfJzvhc06vA1jQXRriW', 'ADMIN', 2);
+INSERT INTO credentials (username, password, role, utente_id) VALUES ('mario','$2a$10$7qOnBn5W2WDPqrujOnv28ObTZvAsE7Z7j2mxsgYgF8n1btH3x9L1a','UTENTE',1);
+
+-- Mario (utente_id = 1)
+INSERT INTO preferito (id_utente, id_evento, data_aggiunta) VALUES (1, 5, CURRENT_DATE);  -- Electro Elegance
+INSERT INTO preferito (id_utente, id_evento, data_aggiunta) VALUES (1, 13, CURRENT_DATE); -- Karaoke Night
+
+-- Beatrice (utente_id = 2)
+INSERT INTO preferito (id_utente, id_evento, data_aggiunta) VALUES (2, 1, CURRENT_DATE);  -- Neon Party
+INSERT INTO preferito (id_utente, id_evento, data_aggiunta) VALUES (2, 16, CURRENT_DATE); -- Molecular Night
+
+-- Lucia (utente_id = 3)
+INSERT INTO preferito (id_utente, id_evento, data_aggiunta) VALUES (3, 7, CURRENT_DATE);  -- Techno Marathon
+INSERT INTO preferito (id_utente, id_evento, data_aggiunta) VALUES (3, 15, CURRENT_DATE); -- Industrial Rave
+
+
+
+
+INSERT INTO recensione (testo, valutazione, id_utente, id_preferito) VALUES ('Una serata incredibile! Atmosfera elegante e musica super coinvolgente.', 5, 1, 1);
+
+INSERT INTO recensione (testo, valutazione, id_utente, id_preferito) VALUES ('Colori, luci e vibrazioni pazzesche. Ottima organizzazione!', 4, 2, 3);
+INSERT INTO recensione (testo, valutazione, id_utente, id_preferito) VALUES ('12 ore di techno pura. Un sogno per gli amanti del genere!', 5, 3, 5);

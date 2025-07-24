@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Discoteca - ItaloDisco</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+	<link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVIGAZIONE -->
+<nav class="navigazione-principale">
+    <div class="menu-sinistra">
+        <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        <div class="voce-menu" onclick="location.href='/admin/discoteca/lista'">GESTIONE DISCOTECHE</div>
+    </div>
+</nav>
+
+<!-- FORM DISCOTECA -->
+<section class="contenuto-admin">
+    <h1 th:text="${discoteca.id == null ? 'Nuova Discoteca' : 'Modifica Discoteca'}"></h1>
+
+    <form th:action="@{${discoteca.id == null} ? '/admin/discoteca/salva' : '/admin/discoteca/' + ${discoteca.id} + '/modifica'}"
+          th:object="${discoteca}" method="post" class="form-admin">
+
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" th:field="*{nome}" required />
+
+        <label for="indirizzo">Indirizzo</label>
+        <input type="text" id="indirizzo" th:field="*{indirizzo}" required />
+
+        <label for="descrizione">Descrizione</label>
+        <textarea id="descrizione" th:field="*{descrizione}" rows="4" required></textarea>
+
+        <label for="immagine">URL Immagine</label>
+        <input type="text" id="immagine" th:field="*{immagine}" />
+
+        <button type="submit" class="bottone-admin">Conferma</button>
+    </form>
+</section>
+
+</body>
+</html>

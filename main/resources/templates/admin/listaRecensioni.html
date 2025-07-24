@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Recensioni - Admin</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<nav class="navigazione-principale">
+    <div class="menu-sinistra">
+        <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        <div class="voce-menu" onclick="location.href='/admin/dashboard'">DASHBOARD</div>
+    </div>
+</nav>
+
+<section class="contenuto-admin">
+    <h1>Recensioni utenti</h1>
+
+    <div th:if="${not #lists.isEmpty(recensioni)}">
+        <div class="griglia-admin" th:each="rec : ${recensioni}">
+			<div class="card-admin">
+			    <h3 th:text="'Discoteca: ' + ${rec.preferito.evento.discoteca.nome}">Discoteca</h3>
+			    <p th:text="'Evento: ' + ${rec.preferito.evento.nome}">Evento</p>
+			    <p th:text="'Utente: ' + ${rec.utente.nome}">Utente</p>
+			    <p th:text="${rec.testo}">Testo recensione</p>
+			    <form th:action="@{'/admin/recensione/' + ${rec.id} + '/elimina'}" method="post">
+			        <button style="background-color: red;">Elimina</button>
+			    </form>
+			</div>
+        </div>
+    </div>
+
+    <p th:if="${#lists.isEmpty(recensioni)}">Nessuna recensione presente.</p>
+</section>
+
+</body>
+</html>
