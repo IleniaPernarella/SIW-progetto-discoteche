@@ -14,6 +14,7 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Utente;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.UtenteService;
+import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 
 @Controller
@@ -47,6 +48,10 @@ public String registerUser(@Valid @ModelAttribute("utente") Utente user,
     if (!userBinding.hasErrors() && !credentialsBinding.hasErrors()) {
         userService.saveUser(user);
         credentials.setUtente(user);
+        
+        if(credentials.getRole()==null)
+        	credentials.setRole(Credentials.DEFAULT_ROLE);
+        
         credentialsService.saveCredentials(credentials);
         return "redirect:/login";
     }
@@ -62,11 +67,16 @@ public String registerUser(@Valid @ModelAttribute("utente") Utente user,
     @GetMapping("/success")
     public String loginSuccessRedirect() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        
         Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-
+        
+        
         if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "redirect:/admin/dashboard";
+            return "redirect:/";
         }
         return "redirect:/";
     }
+    
+ 
 }

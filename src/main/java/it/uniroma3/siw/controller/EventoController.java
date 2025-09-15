@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.model.Evento;
 import it.uniroma3.siw.service.DiscotecaService;
 import it.uniroma3.siw.service.EventoService;
+import it.uniroma3.siw.service.RecensioneService;
 
 @Controller
 public class EventoController {
@@ -24,6 +25,8 @@ public class EventoController {
 	@Autowired
 	private EventoService eventoSerivice;
 
+	@Autowired
+	private RecensioneService recensioneSerivice;
 	
 	@GetMapping("/discoteca/{id}")
 	public String mostraDiscoteca(@PathVariable Long id,Model model,Principal principal) {
@@ -36,6 +39,12 @@ public class EventoController {
 		if(discotecaService.getDiscoteca(id)==null) {
 			return "redirect:/";
 		}
+		
+		 // 🔹 Per ogni evento calcolo la media con il service
+	    for (Evento e : eventoSerivice.getEventiPerDiscoteca(discotecaService.getDiscoteca(id))) {
+	        Double media = recensioneSerivice.calcolaMediaPerEvento(e);
+	        e.setMediaRecensioni(media);
+	    }
 		
 		model.addAttribute("discoteca",discotecaService.getDiscoteca(id));
 		model.addAttribute("eventi",eventoSerivice.getEventiPerDiscoteca(discotecaService.getDiscoteca(id)));

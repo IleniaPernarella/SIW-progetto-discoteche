@@ -168,3 +168,30 @@
     /* Imposta la dimensione del testo */
     font-size: 24px;
 }
+
+
+/* =============== NAVBAR ADMIN =============== */
+.menu-centro {
+    position: absolute;
+    left: 50%;
+    top: 20px; /* stessa distanza verticale dei menu */
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 3;
+}
+
+.admin-dashboard {
+    font-size: 20px;
+    letter-spacing: 13px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    padding:  15px;
+    
+}
+
+.admin-dashboard:hover {
+    color: #04ffff;
+    
+    
+}

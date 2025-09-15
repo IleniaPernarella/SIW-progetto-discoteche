@@ -1,0 +1,341 @@
+/* LAYOUT PRINCIPALE */
+.layout-admin {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #2e2e2e;
+    color: white;
+    font-family: 'Geologica', sans-serif;
+}
+
+/* NAV BAR ORIGINALE */
+.navigazione-principale {
+    position: relative;
+    top: 0; 
+    left: 0;
+    right: 0;
+    height: 114px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+}
+
+.titolo-dashboard {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.menu-sinistra, .menu-destra {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.voce-menu {
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.voce-menu:hover {
+    color: #04ffff;
+}
+
+/* SEZIONE HERO FORM DISCOTECA */
+.sezione-hero-discoteca {
+    position: relative;
+    width: 100%;
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    overflow: hidden;
+}
+
+.immagine-sfondo-hero-discoteca {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/img-sfondo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px) brightness(0.6);
+    z-index: 0;
+}
+
+.sovrapposizione-hero-discoteca {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+/* FORM COMPLETAMENTE TRASPARENTE */
+.form-container-discoteca {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    width: 90%;
+    background: transparent;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.titolo-form-discoteca {
+    color: rgb(255, 255, 255);
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-discoteca {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CAMPI CON EFFETTO GHIACCIO */
+.campo-form {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-family: 'Geologica', sans-serif;
+    color: white;
+    font-size: 15px;
+    transition: background 0.25s ease, border-color 0.25s ease;
+	width: 100%;
+	max-width: 700px;
+}
+
+.campo-form:focus {
+    outline: none;
+    background: rgba(255,255,255,0.08);
+    border-color: #04ffff;
+}
+
+.etichetta-campo {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.bottone-contenitore {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.bottone-discoteca {
+    background-color: #04ffff;
+    color: black;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.bottone-discoteca:hover {
+    background-color: #06ffff;
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* SEZIONE DISCOTECHE ADMIN */
+.sezione-discoteche-admin {
+    background-color: #383838;
+    padding: 60px 40px;
+    margin-top: 0;
+}
+
+.titolo-sezione-admin {
+    font-size: 36px;
+    letter-spacing: 55px;
+    text-align: center;
+    margin-bottom: 60px;
+    padding-top: 20px;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* GRIGLIA CARD DISCOTECHE */
+.griglia-discoteche-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1440px;
+    margin: 0 auto;
+	padding-bottom: 60px; /* distanza dal footer */
+}
+
+/* CARD DISCOTECA */
+.card-discoteca-admin {
+    position: relative;
+    width: 300px;
+    height: 222px;
+    border-radius: 41px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 4px 5px 4px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-discoteca-admin:hover {
+    transform: scale(1.03);
+    box-shadow: 4px 4px 4px rgba(4,255,255,0.5);
+}
+
+.immagine-card-admin {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.titolo-card-admin {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    word-wrap: break-word;
+}
+
+/* TASTO ELIMINA CARD */
+.form-elimina-card {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+}
+
+.tasto-elimina {
+    background: rgba(255,0,0,0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.tasto-elimina:hover {
+    background: rgba(255,0,0,1);
+    transform: scale(1.2);
+}
+
+/* MESSAGGIO NESSUNA DISCOTECA */
+.nessuna-discoteca {
+    text-align: center;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-style: italic;
+    font-size: 18px;
+}
+
+/* FOOTER ORIGINALE */
+.piè-di-pagina {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 0;
+    margin-top: auto;
+}
+
+.contenuto-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.marchio-footer h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sezione-footer h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.sezione-footer p {
+    margin: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sezione-footer p:hover {
+    color: #04ffff;
+}
+.bottone-gestione-eventi {
+    position: absolute;    /* posizione assoluta rispetto alla card */
+    bottom: 15px;          /* distanza dal fondo della card */
+    left: 50%;             /* centro orizzontale */
+    transform: translateX(-50%);
+    display: inline-block;
+    padding: 6px 12px;
+	font-size: 14px;
+    background-color: #04ffff;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    z-index: 2;            /* sopra l'immagine */
+}
+
+.bottone-gestione-eventi:hover {
+    background-color: #04ffff;
+    transform: translateX(-50%) scale(1.05); /* mantiene il centro */
+}
+
+
+

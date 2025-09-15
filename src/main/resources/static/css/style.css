@@ -79,6 +79,18 @@ body {
     z-index: 3;             /* Sopra tutti gli altri elementi */
 }
 
+
+.menu-destra {
+    display: flex;
+    align-items: center;
+    gap: 20px;            /* spazio tra benvenuto e logout */
+}
+
+.menu-destra .voce-menu {
+    letter-spacing: 13px; /* resta per HOME, PREFERITI, ecc. */
+}
+
+
 /* Contenitore per le voci di menu a sinistra */
 .menu-sinistra {
     display: flex;                /* Utilizza Flexbox per allineare gli elementi */
@@ -107,6 +119,10 @@ body {
     font-size: 13px;
     letter-spacing: 13px;
     transition: transform 0.2s; /* Animazione al passaggio */
+	min-width: 120px;      /* larghezza minima fissa */
+	text-align: center;    /* centra il testo */
+	white-space: nowrap;   /* impedisce che vada a capo */
+	flex-shrink: 0;        /* non si restringe */
 }
 
 /* Effetto hover per il pulsante */

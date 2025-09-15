@@ -39,6 +39,17 @@ body {
     align-items: center;
 }
 
+.menu-destra {
+    display: flex;
+    align-items: center;
+    gap: 20px;            /* spazio tra benvenuto e logout */
+}
+
+.menu-destra .voce-menu {
+    letter-spacing: 13px; /* resta per HOME, PREFERITI, ecc. */
+}
+
+
 /* Voci del menu */
 .voce-menu {
     font-size: 20px;
@@ -52,14 +63,16 @@ body {
     color: #04ffff;
 }
 
-/* Bottone login */
-.pulsante-login {
+.menu-destra .pulsante-login {
     background-color: rgba(255, 255, 255, 0.39);
-    padding: 5px 15px;
+    padding: 5px 20px;
     border-radius: 32px;
     font-size: 13px;
-    letter-spacing: 13px;
-    transition: transform 0.2s;
+    letter-spacing: 13px;  /* niente spacing largo */
+    min-width: 120px;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .pulsante-login:hover {

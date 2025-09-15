@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -29,6 +30,9 @@ public class Evento {
 	private LocalDateTime dataOra;
 	private float prezzo;
 	
+	@Transient
+	private Double mediaRecensioni;
+	
 	@ManyToOne
 	@JoinColumn(name="ID_discoteca")
 	private Discoteca discoteca;
@@ -36,7 +40,27 @@ public class Evento {
 	@OneToMany(mappedBy="evento")
 	private List<Preferito> preferiti;
 
+	@OneToMany(mappedBy = "evento")
+	private List<Recensione> recensioni;
+
 	
+	
+	//Calcola il numero di stelline arrotondato
+	@Transient
+	public int getStelleArrotondate() {
+	    if (mediaRecensioni == null) {
+	        return 0; // nessuna recensione
+	    }
+	    return (int) Math.round(mediaRecensioni); // esempio: 3.6 -> 4 stelle
+	}
+	
+	public Double getMediaRecensioni() {
+	    return mediaRecensioni;
+	}
+
+	public void setMediaRecensioni(Double mediaRecensioni) {
+	    this.mediaRecensioni = mediaRecensioni;
+	}
 	
 	public Long getId() {
 		return id;

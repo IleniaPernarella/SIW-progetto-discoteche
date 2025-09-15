@@ -68,4 +68,16 @@ public class EventoService {
 	public Evento getEvento(Long id) {
 	    return eventoRepository.findById(id).orElse(null);
 	}
+
+	public void eliminaEvento(Long id) {
+		eventoRepository.deleteById(id);
+	}
+	
+	public void eliminaEventi(Iterable<Evento> eventi) {
+		eventoRepository.deleteAll(eventi);
+	}
+	
+	public void save(Evento evento) {
+		eventoRepository.save(evento);
+	}
 }

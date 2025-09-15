@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Utenti - Admin</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-utenti.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout-admin">
+
+    <!-- NAV FISSA -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+            <div class="voce-menu" onclick="location.href='/admin/home'">DASHBOARD</div>
+        </div>
+        <div class="titolo-dashboard">GESTIONE UTENTI</div>
+        <div class="menu-destra">
+            <div sec:authorize="isAuthenticated()">
+                <div class="voce-menu" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+                <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEZIONE UTENTI -->
+    <section class="sezione-utenti">
+        <div class="contenitore-carte">
+            <div class="carta-utente" th:each="cred : ${utenti}">
+                <div class="intestazione-carta">
+                    <h3 th:text="${cred.username}"></h3>
+                    <span class="badge-ruolo" th:text="${cred.role}" 
+                          th:classappend="${cred.role == 'ADMIN'} ? 'badge-admin' : 'badge-user'"></span>
+                </div>
+                
+                <div class="corpo-carta">
+                    <div class="info-riga">
+                        <span class="etichetta">ID:</span>
+                        <span th:text="${cred.id}"></span>
+                    </div>
+                    <div class="info-riga">
+                        <span class="etichetta">Nome:</span>
+                        <span th:text="${cred.utente.nome}"></span>
+                    </div>
+                    <div class="info-riga">
+                        <span class="etichetta">Cognome:</span>
+                        <span th:text="${cred.utente.cognome}"></span>
+                    </div>
+                    <div class="info-riga">
+                        <span class="etichetta">Email:</span>
+                        <span th:text="${cred.utente.email}"></span>
+                    </div>
+                    
+                    <form class="form-modifica" th:action="@{/admin/utenti}" method="post">
+                        <input type="hidden" name="id" th:value="${cred.id}">
+                        <div class="selezione-container">
+                            <select name="ruolo" class="selezione-ruolo">
+                                <option value="DEFAULT" th:selected="${cred.role == 'DEFAULT'}">Utente</option>
+                                <option value="ADMIN" th:selected="${cred.role == 'ADMIN'}">Amministratore</option>
+                            </select>
+                            <button type="submit" class="bottone-salva">
+                                <i class="icona-salva"></i> Aggiorna
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ORIGINALE -->
+    <footer class="piè-di-pagina">
+        <div class="contenuto-footer">
+            <div class="marchio-footer">
+                <h4>ITALODISCO</h4>
+                <p>©2025 - ItaloDisco</p>
+                <p>P.IVA 893263</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>CONTATTI</h4>
+                <p>-39 542 928 462</p>
+                <p>italodisco@gmail.com</p>
+                <p>pec@tmp.it</p>
+                <p>FAX 593 039 0293</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>INFORMAZIONI</h4>
+                <p>Chi siamo</p>
+                <p>Prezzi</p>
+                <p>Lavora con noi</p>
+                <p>Licenza</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>SOCIAL</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>TikTok</p>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Discord</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
