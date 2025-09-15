@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-home.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout-admin">
+
+    <!-- NAV FISSA -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        </div>
+        <div class="titolo-dashboard">ADMIN DASHBOARD</div>
+        <div class="menu-destra">
+            <div sec:authorize="isAuthenticated()">
+                <div class="voce-menu pulsante-logout" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+                <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEZIONE ADMIN -->
+    <section class="sezione-admin">
+        <div class="griglia-admin">
+
+
+            <!-- Card Discoteche -->
+            <a href="/admin/discoteche" class="card-admin" style="background-image: url('/img/gestione-discoteche.png');">
+                <div class="overlay-card">
+                    <h2>GESTIONE DISCOTECHE</h2>
+                </div>
+            </a>
+
+            <!-- Card Utenti -->
+            <a href="/admin/utenti" class="card-admin" style="background-image: url('/img/gestione-utenti.png');">
+                <div class="overlay-card">
+                    <h2>GESTIONE UTENTI</h2>
+                </div>
+            </a>
+
+            <!-- Card Recensioni -->
+            <a href="/admin/recensioni" class="card-admin" style="background-image: url('/img/recensioni.png');">
+                <div class="overlay-card">
+                    <h2>RECENSIONI</h2>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="piè-di-pagina">
+        <div class="contenuto-footer">
+            <div class="marchio-footer">
+                <h4>ITALODISCO</h4>
+                <p>©2025 - ItaloDisco</p>
+                <p>P.IVA 893263</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>CONTATTI</h4>
+                <p>-39 542 928 462</p>
+                <p>italodisco@gmail.com</p>
+                <p>pec@tmp.it</p>
+                <p>FAX 593 039 0293</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>INFORMAZIONI</h4>
+                <p>Chi siamo</p>
+                <p>Prezzi</p>
+                <p>Lavora con noi</p>
+                <p>Licenza</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>SOCIAL</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>TikTok</p>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Discord</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

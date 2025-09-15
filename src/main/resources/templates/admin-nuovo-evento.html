@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuovo Evento</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-nuovo-evento.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout-admin">
+
+    <!-- NAVBAR ORIGINALE FISSA -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+            <!-- QUI link dinamico alla pagina eventi discoteca -->
+            <div class="voce-menu" th:onclick="'location.href=\'/admin/discoteche/' + ${discotecaId} + '/eventi\''">DISCOTECHE</div>
+        </div>
+        <div class="titolo-dashboard">NUOVO EVENTO</div>
+        <div class="menu-destra">
+            <div sec:authorize="isAuthenticated()">
+                <div class="voce-menu" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+                <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FORM HERO -->
+    <section class="sezione-hero-evento">
+        <div class="immagine-sfondo-hero-evento"></div>
+        <div class="sovrapposizione-hero-evento"></div>
+
+        <div class="form-container-evento">
+            <h2 class="titolo-form-evento">Crea un Nuovo Evento</h2>
+            <form th:action="@{/admin/discoteche/{id}/eventi(id=${discotecaId})}" method="post" th:object="${evento}" class="form-evento">
+
+                <div class="form-group">
+                    <label class="etichetta-campo" for="nome">Nome Evento *</label>
+                    <input class="campo-form" type="text" id="nome" th:field="*{nome}" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="etichetta-campo" for="descrizione">Descrizione *</label>
+                    <textarea class="campo-form" id="descrizione" th:field="*{descrizione}" rows="4" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="etichetta-campo" for="dataOra">Data e Ora *</label>
+                        <input class="campo-form" type="datetime-local" id="dataOra" th:field="*{dataOra}" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="etichetta-campo" for="prezzo">Prezzo (€) *</label>
+                        <input class="campo-form" type="number" id="prezzo" th:field="*{prezzo}" step="0.01" min="0" required>
+                    </div>
+                </div>
+
+                <div class="bottone-contenitore">
+                    <button type="submit" class="bottone-discoteca">Salva Evento</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER ORIGINALE -->
+    <footer class="piè-di-pagina">
+        <div class="contenuto-footer">
+            <div class="marchio-footer">
+                <h4>ITALODISCO</h4>
+                <p>©2025 - ItaloDisco</p>
+                <p>P.IVA 893263</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>CONTATTI</h4>
+                <p>-39 542 928 462</p>
+                <p>italodisco@gmail.com</p>
+                <p>pec@tmp.it</p>
+                <p>FAX 593 039 0293</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>INFORMAZIONI</h4>
+                <p>Chi siamo</p>
+                <p>Prezzi</p>
+                <p>Lavora con noi</p>
+                <p>Licenza</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>SOCIAL</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>TikTok</p>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Discord</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

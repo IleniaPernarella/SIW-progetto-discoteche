@@ -1,0 +1,270 @@
+/* LAYOUT PRINCIPALE */
+.layout-admin {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #2e2e2e;
+    color: white;
+    font-family: 'Geologica', sans-serif;
+}
+
+/* NAV BAR - Stile originale */
+.navigazione-principale {
+    position: relative;
+    top: 0; 
+    left: 0;
+    right: 0;
+    height: 114px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+}
+
+.titolo-dashboard {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.menu-sinistra, .menu-destra {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.voce-menu {
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.voce-menu:hover {
+    color: #04ffff; 
+}
+
+/* SEZIONE UTENTI */
+.sezione-utenti {
+    flex-grow: 1;
+    padding: 60px 40px;
+}
+
+.contenitore-carte {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+.carta-utente {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carta-utente:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+.intestazione-carta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.intestazione-carta h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #04ffff; /* Celeste specificato */
+}
+
+.badge-ruolo {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-admin {
+    background-color: rgb(255, 79, 79);
+    color: rgb(0, 0, 0);
+}
+
+.badge-user {
+    background-color: #04ffff; 
+    color: rgb(0, 0, 0);
+}
+
+.corpo-carta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-riga {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.etichetta {
+    font-weight: 600;
+    color: #04ffff; 
+}
+
+
+.form-modifica {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.selezione-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.selezione-ruolo {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Geologica', sans-serif;
+}
+
+
+.selezione-ruolo option {
+    background-color: #2e2e2e; 
+    color: white; 
+}
+
+.selezione-ruolo:focus {
+    outline: none;
+    border-color: #04ffff; /
+}
+
+.bottone-salva {
+    background-color: #04ffff; 
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Geologica', sans-serif;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bottone-salva:hover {
+    background-color: #00cccc; /* Celeste più scuro */
+}
+
+.icona-salva {
+    width: 16px;
+    height: 16px;
+    background-color: rgb(0, 0, 0);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") no-repeat center;
+}
+
+/* FOOTER ORIGINALE */
+.piè-di-pagina {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 0;
+    margin-top: auto;
+}
+
+.contenuto-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.marchio-footer h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sezione-footer h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.sezione-footer p {
+    margin: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sezione-footer p:hover {
+    color: #04ffff; 
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .contenitore-carte {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .navigazione-principale {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+    
+    .titolo-dashboard {
+        position: static;
+        transform: none;
+        margin: 15px 0;
+        text-align: center;
+    }
+    
+    .sezione-utenti {
+        padding: 30px 15px;
+    }
+    
+    .contenitore-carte {
+        grid-template-columns: 1fr;
+    }
+    
+    .selezione-container {
+        flex-direction: column;
+    }
+    
+    .bottone-salva {
+        width: 100%;
+        justify-content: center;
+    }
+}

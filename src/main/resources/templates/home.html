@@ -7,7 +7,7 @@ xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ItaloDisco - Discoteche di Roma</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+  
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -24,6 +24,13 @@ xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
             <div class="voce-menu" onclick="location.href='/'">HOME</div>
             <div class="voce-menu" onclick="location.href='/preferiti'">PREFERITI</div>
         </div>
+		
+		<!-- ADMIN -->
+		    <div class="menu-centro">
+				<div sec:authorize="hasAuthority('ADMIN')" class="voce-menu admin-dashboard" onclick="location.href='/admin/home'">
+					ADMIN DASHBOARD
+					</div>
+				</div>
 
         <!-- LOGIN / LOGOUT + BENVENUTO -->
 		<div class="menu-destra">

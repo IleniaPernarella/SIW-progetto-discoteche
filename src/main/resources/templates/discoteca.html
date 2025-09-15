@@ -61,6 +61,18 @@
 	            <h4 class="titolo-evento" th:text="${evento.nome}">Nome Evento</h4>
 	            <p th:text="${evento.descrizione}">Descrizione Evento</p>
 				<p>
+					
+					<p>
+					    <span class="etichetta">Recensioni:</span>
+					    <span th:if="${evento.mediaRecensioni == null}">Nessuna recensione</span>
+					    <span th:if="${evento.mediaRecensioni != null}" class="stelle">
+					        <!-- Ciclo per stampare le stelle piene -->
+					        <span class="stella piena" th:each="i : ${#numbers.sequence(1, evento.stelleArrotondate)}">★</span>
+					        <!-- Ciclo per stampare le stelle vuote -->
+					        <span class="stella vuota" th:each="i : ${#numbers.sequence(1, 5 - evento.stelleArrotondate)}">☆</span>
+					        (<span th:text="${#numbers.formatDecimal(evento.mediaRecensioni, 1, 1)}"></span>)
+					    </span>
+					</p>
 				           <span class="etichetta">Data:</span>
 				           <span th:text="${#temporals.format(evento.dataOra, 'dd/MM/yyyy HH:mm')}">Data e Ora</span>
 				       </p>

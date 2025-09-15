@@ -16,7 +16,7 @@ public class Recensione {
 	private Long id;
 	
 	private String testo;
-	private int valutazione;
+	private Integer valutazione;
 	
 	
 	@ManyToOne
@@ -27,8 +27,17 @@ public class Recensione {
     @JoinColumn(name = "ID_Preferito", unique = true)
     private Preferito preferito;
 
+    @ManyToOne
+    private Evento evento;   
     
-    
+	public Evento getEvento() {
+		return evento;
+	}
+
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -45,11 +54,11 @@ public class Recensione {
 		this.testo = testo;
 	}
 
-	public int getValutazione() {
+	public Integer getValutazione() {
 		return valutazione;
 	}
 
-	public void setValutazione(int valutazione) {
+	public void setValutazione(Integer valutazione) {
 		this.valutazione = valutazione;
 	}
 

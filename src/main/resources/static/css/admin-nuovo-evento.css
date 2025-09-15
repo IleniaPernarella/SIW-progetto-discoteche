@@ -1,0 +1,210 @@
+/* LAYOUT */
+.layout-admin {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #2e2e2e;
+    color: white;
+    font-family: 'Geologica', sans-serif;
+}
+
+/* NAVBAR ORIGINALE FISSA */
+.navigazione-principale {
+    position: relative;
+    top: 0; 
+    left: 0;
+    right: 0;
+    height: 114px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+}
+
+.titolo-dashboard {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.menu-sinistra, .menu-destra {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.voce-menu {
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.voce-menu:hover {
+    color: #04ffff;
+}
+
+/* HERO FORM */
+.sezione-hero-evento {
+    position: relative;
+    width: 100%;
+    padding: 160px 0 80px; /* spazio extra per navbar fissa */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.immagine-sfondo-hero-evento {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/img-sfondo.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px) brightness(0.6);
+    z-index: 0;
+}
+
+.sovrapposizione-hero-evento {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+.form-container-evento {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    width: 90%;
+    background: transparent;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.titolo-form-evento {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-evento {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-form {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: white;
+    font-size: 15px;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.campo-form:focus {
+    outline: none;
+    background: rgba(255,255,255,0.08);
+    border-color: #04ffff;
+}
+
+.etichetta-campo {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.bottone-contenitore {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.bottone-discoteca {
+    background-color: #04ffff;
+    color: black;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.bottone-discoteca:hover {
+    background-color: #06ffff;
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* FOOTER ORIGINALE */
+
+.piè-di-pagina {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 0;
+    margin-top: auto;
+}
+
+.contenuto-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.marchio-footer h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sezione-footer h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.sezione-footer p {
+    margin: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sezione-footer p:hover {
+    color: #04ffff;
+}

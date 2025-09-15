@@ -3,14 +3,14 @@
       xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Preferiti</title>
+    <title>Scrivi Recensione</title>
     <link rel="stylesheet" th:href="@{/css/base.css}">
-    <link rel="stylesheet" th:href="@{/css/preferiti.css}">
+    <link rel="stylesheet" th:href="@{/css/recensioneForm.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="layout-preferiti">
+<div class="layout-recensione">
 
     <!-- NAV FISSA -->
     <nav class="navigazione-principale">
@@ -30,59 +30,41 @@
         </div>
     </nav>
 
-    <!-- SEZIONE PREFERITI -->
-	<div class="griglia-preferiti" th:if="${not #lists.isEmpty(preferiti)}">
-	    <div class="card-preferito" th:each="pref : ${preferiti}">
-	        
-	        <!-- Bottone rimuovi -->
-	        <form th:action="@{'/preferito/' + ${pref.id} + '/rimuovi'}" method="post">
-	            <button type="submit" class="bottone-rimuovi" aria-label="Rimuovi dai preferiti"
-				onclick="return confirm('Sei sicuro di voler eliminare questo evento?');">
-	                <i class="fa-solid fa-trash"></i>
-	            </button>
-	        </form>
+    <!-- MAIN RECENSIONE CON SFONDO -->
+    <main class="main-recensione" style="background-image: url('/img/img-sfondo.jpg');">
+        <div class="overlay"></div>
+        <form class="recensione-form" th:action="@{/recensione/salva}" th:object="${recensione}" method="post">
+            <h2>Scrivi una Recensione</h2>
 
-	        <!-- Immagine e nome discoteca -->
-	        <img th:src="${pref.evento.discoteca.immagine}" alt="immagine discoteca">
-	        <div class="nome-discoteca" th:text="${pref.evento.discoteca.nome}">Nome Discoteca</div>
+            <!-- hidden preferito id -->
+            <input type="hidden" th:field="*{preferito.id}"/>
 
-	        <!-- Contenuto card -->
-	        <div class="contenuto-card">
-	            <h3 th:text="${pref.evento.nome}">Nome Evento</h3>
-	            <p th:text="${#temporals.format(pref.evento.dataOra, 'dd/MM/yyyy HH:mm')}">Data</p>
+            <div class="form-group">
+                <label for="testo">Testo della recensione:</label>
+                <textarea id="testo" th:field="*{testo}" rows="5" placeholder="Scrivi qui la tua recensione..." required></textarea>
+            </div>
 
-				<!-- Recensione dell'utente loggato -->
-				<div th:if="${recensioniUtentePerEvento[pref.evento.id] != null}" 
-				     class="recensione recensione-utente">
-				    <strong class="nome-utente">Tu</strong>:
-				    <span th:text="${recensioniUtentePerEvento[pref.evento.id].testo}"></span>
-				    (<span th:text="${recensioniUtentePerEvento[pref.evento.id].valutazione}"></span>/5)
-				</div>
+            <div class="form-group rating-group">
+                <label>Valutazione:</label>
+                <div class="stars">
+                    <input type="radio" id="star5" th:field="*{valutazione}" value="5" required>
+                    <label for="star5" title="5 stelle">★</label>
+                    <input type="radio" id="star4" th:field="*{valutazione}" value="4">
+                    <label for="star4" title="4 stelle">★</label>
+                    <input type="radio" id="star3" th:field="*{valutazione}" value="3">
+                    <label for="star3" title="3 stelle">★</label>
+                    <input type="radio" id="star2" th:field="*{valutazione}" value="2">
+                    <label for="star2" title="2 stelle">★</label>
+                    <input type="radio" id="star1" th:field="*{valutazione}" value="1">
+                    <label for="star1" title="1 stella">★</label>
+                </div>
+            </div>
 
-				<!-- Recensioni di altri utenti -->
-				<div th:each="rec : ${recensioniAltriPerEvento[pref.evento.id]}" 
-				     class="recensione recensione-altri">
-				    <strong class="nome-utente" th:text="${rec.utente.nome}">Nome Utente</strong>:
-				    <span th:text="${rec.testo}">Testo recensione</span>
-				    (<span th:text="${rec.valutazione}">5</span>/5)
-				</div>
-
-
-	            <!-- Pulsante recensisci se utente non ha recensito -->
-	            <div th:if="${recensioniUtentePerEvento[pref.evento.id] == null}">
-	                <form th:action="@{/recensione/crea/{eventoId}(eventoId=${pref.evento.id})}" method="get">
-	                    <button type="submit" class="bottone-recensisci">Recensisci</button>
-	                </form>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
-	<!-- Messaggio se lista vuota -->
-	<div class="messaggio-vuoto" th:if="${#lists.isEmpty(preferiti)}">
-	    <p>Non hai ancora aggiunto eventi ai preferiti.</p>
-	</div>
-
+            <div class="form-actions">
+                <button type="submit">Invia Recensione</button>
+            </div>
+        </form>
+    </main>
 
     <!-- FOOTER -->
     <footer class="piè-di-pagina">
@@ -126,6 +108,7 @@
             </div>
         </div>
     </footer>
+
 </div>
 </body>
 </html>

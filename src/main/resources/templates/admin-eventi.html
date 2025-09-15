@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Gestione Eventi - ' + ${discoteca.nome}"></title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-eventi.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout-admin">
+
+    <!-- NAVBAR FISSA (come admin-discoteche) -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+            <div class="voce-menu" onclick="location.href='/admin/discoteche'">DISCOTECHE</div>
+        </div>
+        <div class="menu-destra">
+            <div sec:authorize="isAuthenticated()">
+                <div class="voce-menu"> EVENTI DI <span th:text="${discoteca.nome}"></span> </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEZIONE HERO -->
+    <section class="sezione-hero-admin">
+        <div class="immagine-sfondo-hero"></div>
+        <div class="sovrapposizione-hero"></div>
+
+        <div class="contenuto-hero">
+            <h1 class="discoteca-principale" th:text="${discoteca.nome}"></h1>
+            <p class="descrizione-hero" th:text="${discoteca.indirizzo}"></p>
+        </div>
+    </section>
+
+    <!-- SEZIONE EVENTI -->
+    <section class="sezione-eventi-admin">
+        <h2 class="titolo-sezione-admin">I MIEI EVENTI</h2>
+
+        <div class="griglia-eventi-admin" th:if="${not #lists.isEmpty(eventi)}">
+            <div class="evento-card" th:each="evento : ${eventi}">
+				
+				<!-- Bottone elimina evento -->
+				<form th:action="@{'/admin/eventi/' + ${evento.id} + '/elimina'}" method="post">
+				    <button type="submit" class="bottone-elimina" aria-label="Elimina evento"
+				            onclick="return confirm('Sei sicuro di voler eliminare questo evento?');">
+				        <i class="fa-solid fa-trash"></i>
+				    </button>
+				</form>
+
+				
+                <div class="info-evento">
+                    <h3 class="titolo-evento" th:text="${evento.nome}">Nome Evento</h3>
+                    <p th:text="${evento.descrizione}">Descrizione evento</p>
+					<p class="data-prezzo"><span class="etichetta">Data:</span> 
+					    <span th:text="${#temporals.format(evento.dataOra,'dd/MM/yyyy HH:mm')}">Data</span>
+					</p>
+					<p class="data-prezzo"><span class="etichetta">Prezzo:</span> 
+					    <span th:text="${evento.prezzo} + ' €'">Prezzo</span>
+					</p>
+
+                </div>
+
+                <!-- BOTTONE MODIFICA -->
+                <div class="box-bottone">
+                    <a th:href="@{'/admin/eventi/' + ${evento.id} + '/modifica'}" class="bottone-modifica">Modifica Evento</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nessun-evento" th:if="${#lists.isEmpty(eventi)}">
+            <p>Nessun evento per questa discoteca.</p>
+        </div>
+
+        <div class="bottone-contenitore">
+            <a th:href="@{'/admin/discoteche/' + ${discoteca.id} + '/eventi/nuovo'}" class="bottone-nuovo-evento">➕ Aggiungi Nuovo Evento</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="piè-di-pagina">
+        <div class="contenuto-footer">
+            <div class="marchio-footer">
+                <h4>ITALODISCO</h4>
+                <p>©2025 - ItaloDisco</p>
+                <p>P.IVA 893263</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>CONTATTI</h4>
+                <p>-39 542 928 462</p>
+                <p>italodisco@gmail.com</p>
+                <p>pec@tmp.it</p>
+                <p>FAX 593 039 0293</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>INFORMAZIONI</h4>
+                <p>Chi siamo</p>
+                <p>Prezzi</p>
+                <p>Lavora con noi</p>
+                <p>Licenza</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>SOCIAL</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>TikTok</p>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Discord</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

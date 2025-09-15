@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Discoteche - Admin</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-discoteche.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout-admin">
+
+    <!-- NAV FISSA -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+            <div class="voce-menu" onclick="location.href='/admin/home'">DASHBOARD</div>
+        </div>
+        <div class="titolo-dashboard">GESTIONE DISCOTECHE</div>
+        <div class="menu-destra">
+            <div sec:authorize="isAuthenticated()">
+                <div class="voce-menu" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+                <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEZIONE FORM DISCOTECA -->
+    <section class="sezione-hero-discoteca">
+        <div class="immagine-sfondo-hero-discoteca"></div>
+        <div class="sovrapposizione-hero-discoteca"></div>
+
+        <div class="form-container-discoteca">
+            <h2 class="titolo-form-discoteca">Aggiungi Nuova Discoteca</h2>
+            <form th:action="@{/admin/discoteche}" method="post" class="form-discoteca">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="etichetta-campo" for="nome">Nome *</label>
+                        <input class="campo-form" type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="etichetta-campo" for="indirizzo">Indirizzo *</label>
+                        <input class="campo-form" type="text" id="indirizzo" name="indirizzo" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="etichetta-campo" for="descrizione">Descrizione *</label>
+                    <textarea class="campo-form" id="descrizione" name="descrizione" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="etichetta-campo" for="immagine">URL Immagine</label>
+                    <input class="campo-form" type="url" id="immagine" name="immagine" placeholder="https://...">
+                </div>
+                <div class="bottone-contenitore">
+                    <button type="submit" class="bottone-discoteca">Aggiungi Discoteca</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+	<!-- SEZIONE CARDS DISCOTECHE -->
+	<h2 class="titolo-sezione-admin">LE TUE DISCOTECHE</h2>
+
+	<div class="griglia-discoteche-admin" th:if="${not #lists.isEmpty(discotecheAdmin)}">
+	    <div class="card-discoteca-admin" th:each="discoteca : ${discotecheAdmin}">
+	        <img th:src="${discoteca.immagine}" alt="Interno discoteca" class="immagine-card-admin">
+	        <h3 class="titolo-card-admin" th:text="${discoteca.nome.toUpperCase()}"></h3>
+
+	        <!-- FORM ELIMINA -->
+	        <form th:action="@{/admin/discoteche/delete/{id}(id=${discoteca.id})}" method="post" class="form-elimina-card">
+	            <button type="submit" class="tasto-elimina">×</button>
+	        </form>
+			
+			<!-- PULSANTE GESTIONE EVENTI -->
+			<a th:href="@{/admin/discoteche/{id}/eventi(id=${discoteca.id})}" class="bottone-gestione-eventi">
+			            Gestione Eventi
+			        </a>
+	    </div>
+	</div>
+
+	<div class="nessuna-discoteca" th:if="${#lists.isEmpty(discotecheAdmin)}">
+	    <p>Non hai ancora aggiunto nessuna discoteca.</p>
+	</div>
+
+
+    <!-- FOOTER ORIGINALE -->
+    <footer class="piè-di-pagina">
+        <div class="contenuto-footer">
+            <div class="marchio-footer">
+                <h4>ITALODISCO</h4>
+                <p>©2025 - ItaloDisco</p>
+                <p>P.IVA 893263</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>CONTATTI</h4>
+                <p>-39 542 928 462</p>
+                <p>italodisco@gmail.com</p>
+                <p>pec@tmp.it</p>
+                <p>FAX 593 039 0293</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>INFORMAZIONI</h4>
+                <p>Chi siamo</p>
+                <p>Prezzi</p>
+                <p>Lavora con noi</p>
+                <p>Licenza</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>SOCIAL</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>TikTok</p>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Discord</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

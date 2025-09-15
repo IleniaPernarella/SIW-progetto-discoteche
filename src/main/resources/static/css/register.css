@@ -86,7 +86,7 @@
 
 .login-custom .campo-form {
     background-color: rgba(255, 255, 255, 0.16);
-    color: #000;
+    color: rgb(255, 255, 255);
     border: none;
     font-weight: 500;
     padding: 1rem;
