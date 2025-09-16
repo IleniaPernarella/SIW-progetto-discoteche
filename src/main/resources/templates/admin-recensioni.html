@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Recensioni</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-recensioni.css}">  <!-- Link al CSS separato -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout-recensioni">
+
+    <!-- NAV FISSA -->
+    <nav class="navigazione-principale">
+        <div class="menu-sinistra">
+            <div class="voce-menu" onclick="location.href='/admin/home'">DASHBOARD</div>
+            <div class="voce-menu" onclick="location.href='/'">HOME</div>
+        </div>
+        <div class="menu-destra">
+            <div sec:authorize="isAuthenticated()">
+                <div class="voce-menu pulsante-logout" onclick="document.getElementById('logoutForm').submit()">LOGOUT</div>
+                <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEZIONE RECENSIONI (con pannelli glass espandibili) -->
+    <section class="sezione-recensioni">
+        <div class="griglia-pannelli" th:if="${not #lists.isEmpty(recensioniAdmin)}">
+            <div class="pannello-glass" th:each="rec : ${recensioniAdmin}"
+                 th:style="'background-image: url(' + ${rec.evento.discoteca.immagine} + ');'">
+                
+                <!-- Overlay glass per contenuto -->
+                <div class="overlay-glass">
+                    <h3 th:text="${rec.evento.nome}">Nome Evento</h3>
+                    <p class="recensione-dettagli">
+                        <strong>Discoteca:</strong> <span th:text="${rec.evento.discoteca.nome}"></span>
+                    </p>
+                    <p class="recensione-dettagli">
+                        <strong>Utente:</strong> <span th:text="${rec.utente.nome} + ' ' + ${rec.utente.cognome}"></span>
+                    </p>
+                    <p class="recensione-dettagli">
+                        <strong>Valutazione:</strong>
+                        <span class="stelline">
+                            <i th:each="i : ${#numbers.sequence(1, rec.valutazione)}" class="fa-solid fa-star"></i>
+                            <i th:each="i : ${#numbers.sequence(rec.valutazione + 1, 5)}" class="fa-regular fa-star"></i>
+                        </span>
+                    </p>
+                    <p class="recensione-dettagli testo-espandibile">
+                        <strong>Testo:</strong> <span th:text="${rec.testo}">Testo recensione</span>
+                    </p>
+                </div>
+
+                <!-- Bottone elimina -->
+				<form th:action="@{/admin/recensioni/delete/{id}(id=${rec.id})}" method="post">
+				    <button type="submit" class="bottone-elimina" aria-label="Elimina recensione"
+				            onclick="return confirm('Sei sicuro di voler eliminare questa recensione?');">
+				        <i class="fa-solid fa-trash"></i>
+				    </button>
+				</form>
+>
+            </div>
+        </div>
+
+        <!-- Messaggio se lista vuota -->
+        <div class="messaggio-vuoto" th:if="${#lists.isEmpty(recensioniAdmin)}">
+            <p>Non ci sono recensioni per i tuoi eventi al momento.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER (identico) -->
+    <footer class="piè-di-pagina">
+        <div class="contenuto-footer">
+            <div class="marchio-footer">
+                <h4>ITALODISCO</h4>
+                <p>©2025 - ItaloDisco</p>
+                <p>P.IVA 893263</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>CONTATTI</h4>
+                <p>-39 542 928 462</p>
+                <p>italodisco@gmail.com</p>
+                <p>pec@tmp.it</p>
+                <p>FAX 593 039 0293</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>INFORMAZIONI</h4>
+                <p>Chi siamo</p>
+                <p>Prezzi</p>
+                <p>Lavora con noi</p>
+                <p>Licenza</p>
+            </div>
+            <div class="sezione-footer">
+                <h4>SOCIAL</h4>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>TikTok</p>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Discord</p>
+            </div>
+            <div class="partner-footer">
+                <h4>PARTNER</h4>
+                <div class="loghi-partner">
+                    <div class="logo-partner"></div>
+                    <div class="logo-partner"></div>
+                    <div class="logo-partner"></div>
+                    <div class="logo-partner"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

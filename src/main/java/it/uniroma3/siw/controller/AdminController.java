@@ -19,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Discoteca;
 import it.uniroma3.siw.model.Evento;
+import it.uniroma3.siw.model.Recensione;
 import it.uniroma3.siw.model.Utente;
 import it.uniroma3.siw.repository.DiscotecaRepository;
 import it.uniroma3.siw.repository.EventoRepository;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.DiscotecaService;
 import it.uniroma3.siw.service.EventoService;
+import it.uniroma3.siw.service.RecensioneService;
 
 
 @Controller
@@ -40,6 +42,9 @@ public class AdminController {
 
 	@Autowired
 	private EventoService eventoService;
+	
+	@Autowired
+	private RecensioneService recensioneService;
 
 
 	
@@ -161,4 +166,28 @@ public class AdminController {
 	    return "redirect:/admin/discoteche/" + id + "/eventi";
 	    
 	}
+	
+	@GetMapping("/admin/recensioni")
+	public String showRecensioniAdmin(Model model) {
+		
+		//recupero utente admin loggato
+		UserDetails userDetails =(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Utente gestore= credentialsService.getCredentials(userDetails.getUsername()).getUtente();
+		
+		List<Recensione> recensioni = recensioneService.getRecensioniPerGestore(gestore);
+		model.addAttribute("recensioniAdmin", recensioni);
+		
+		return "admin-recensioni";
+		
+	}
+	
+	@PostMapping("/admin/recensioni/delete/{id}")
+    public String eliminaRecensione(@PathVariable Long id) {
+        recensioneService.eliminaRecensione(id);
+        return "redirect:/admin/recensioni";
+    }
+	
+	
+	
+	
 }

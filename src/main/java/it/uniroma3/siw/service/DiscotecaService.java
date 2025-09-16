@@ -1,5 +1,6 @@
 package it.uniroma3.siw.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,16 @@ public class DiscotecaService {
 	
 	public Iterable<Discoteca> getAllDiscoteche(){
 		return discotecaRepository.findAll();
+	}
+	
+	public List<Discoteca> getDiscotecheByGestore(Utente gestore){
+		List<Discoteca> discotecheByGestore = new ArrayList<>();
+		for(Discoteca d : discotecaRepository.findAll()) {
+			if(d.getGestore()!=null && d.getGestore().getId().equals(gestore.getId())) {
+				discotecheByGestore.add(d);
+			}
+		}
+		return discotecheByGestore;
 	}
 
 	

@@ -17,9 +17,9 @@ public class PreferitoService {
 
 	@Autowired
 	private PreferitoRepository preferitoRepository;
+	
 	@Autowired
-	private RecensioneRepository recensioneRepository;
-
+	private RecensioneService recensioneService;
 
 	
 	public void save(Preferito preferito) {
@@ -46,7 +46,7 @@ public class PreferitoService {
     
     public List<Recensione> getRecensioniPerEvento(Preferito preferito) {
         // prende tutte le recensioni dell'evento del preferito
-        return recensioneRepository.findByEvento(preferito.getEvento());
+        return recensioneService.getRecensionePerEvento(preferito.getEvento());
     }
 
 }

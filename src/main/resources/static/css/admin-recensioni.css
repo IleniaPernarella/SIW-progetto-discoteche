@@ -1,0 +1,148 @@
+/* Layout principale */
+.layout-recensioni {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAV BAR (fissa) */
+.navigazione-principale {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 114px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+}
+
+/* SEZIONE RECENSIONI */
+.sezione-recensioni {
+    flex-grow: 1;
+    padding: 160px 40px 60px;
+    background-color: #2e2e2e;
+}
+
+.griglia-pannelli {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+/* Pannello glass espandibile (alternativa alle card) */
+.pannello-glass {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    background-size: cover;
+    background-position: center;
+}
+
+.pannello-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+.pannello-glass:hover {
+    transform: scale(1.05) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 8px 30px rgb(128, 255, 255);
+}
+
+/* Overlay per contenuto */
+.overlay-glass {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    color: white;
+}
+
+.overlay-glass h3 {
+    margin: 0 0 10px;
+    font-size: 26px;
+}
+
+.overlay-glass p {
+    margin: 5px 0;
+    font-size: 17px;
+}
+
+/* Stelline */
+.stelline i {
+    color: #ffe15d;
+    margin-right: 2px;
+}
+
+/* Testo espandibile */
+.testo-espandibile {
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.testo-espandibile:hover {
+    max-height: 300px;  /* Espande su hover */
+}
+
+/* Bottone elimina */
+.bottone-elimina {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: rgb(255, 0, 0);
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 3;
+    transition: color 0.3s;
+}
+
+.bottone-elimina:hover {
+    color: rgb(255, 100, 100);
+}
+
+/* Messaggio se vuoto */
+.messaggio-vuoto {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px;
+}
+
+/* Footer spinto in basso */
+.piè-di-pagina {
+    margin-top: auto;
+}
+
+/* Stile dettagli recensione */
+.recensione-dettagli {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.recensione-dettagli strong {
+    color: #00f0ff;
+}

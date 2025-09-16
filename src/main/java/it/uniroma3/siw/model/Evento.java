@@ -54,6 +54,14 @@ public class Evento {
 	    return (int) Math.round(mediaRecensioni); // esempio: 3.6 -> 4 stelle
 	}
 	
+	public List<Recensione> getRecensioni() {
+		return recensioni;
+	}
+
+	public void setRecensioni(List<Recensione> recensioni) {
+		this.recensioni = recensioni;
+	}
+
 	public Double getMediaRecensioni() {
 	    return mediaRecensioni;
 	}
