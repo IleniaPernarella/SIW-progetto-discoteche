@@ -34,8 +34,3 @@ INSERT INTO evento (nome, descrizione, data_ora, prezzo, ID_discoteca) VALUES('V
 INSERT INTO evento (nome, descrizione, data_ora, prezzo, ID_discoteca) VALUES('Velvet Night', 'Una notte elegante e sensuale nella cornice lussuosa di Euphoria. “Velvet Night” è un evento esclusivo con dress code nero e rosso, musica house melodica e servizio bottle service in lounge private. L’illuminazione soft e l’arredamento in velluto daranno vita a un’atmosfera intima e raffinata, perfetta per chi cerca classe e ritmo.', '2025-07-13 22:00:00', 40.00, 8);
 INSERT INTO evento (nome, descrizione, data_ora, prezzo, ID_discoteca) VALUES('Summer Gala', 'Il party estivo più atteso della capitale arriva da Euphoria. Un gala tra luci dorate, abiti eleganti e DJ internazionali che alternano deep house, funk e disco. L’evento prevede ingresso con drink di benvenuto, area fotografica in terrazza, open bar premium e spettacoli con danzatrici LED e bolle luminose.', '2025-07-27 21:00:00', 45.00, 8);
 
-
-
-
-INSERT INTO utente (nome, cognome,email) VALUES ('Mario', 'Rossi','mario@email.com');
-INSERT INTO credentials (username, password, role, utente_id) VALUES ('mario','$2a$10$7qOnBn5W2WDPqrujOnv28ObTZvAsE7Z7j2mxsgYgF8n1btH3x9L1a','UTENTE',1);

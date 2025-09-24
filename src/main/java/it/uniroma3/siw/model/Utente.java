@@ -1,6 +1,6 @@
 package it.uniroma3.siw.model;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.*; 
 
 import java.util.List;
 import java.util.Objects;
@@ -38,9 +38,6 @@ public class Utente {
 	
 	@OneToMany(mappedBy="utente")
 	private List<Recensione> recensioni;
-	
-	@OneToMany(mappedBy="gestoreCreatore")
-	private List<CenaSpettacolo> ceneSpettacoloCreate;
 
 	@OneToOne(mappedBy = "utente", cascade = CascadeType.ALL)
     private Credentials credentials;
@@ -112,13 +109,6 @@ public class Utente {
 		this.recensioni = recensioni;
 	}
 
-	public List<CenaSpettacolo> getCeneSpettacoloCreate() {
-		return ceneSpettacoloCreate;
-	}
-
-	public void setCeneSpettacoloCreate(List<CenaSpettacolo> ceneSpettacoloCreate) {
-		this.ceneSpettacoloCreate = ceneSpettacoloCreate;
-	}
 
 	@Override
 	public int hashCode() {

@@ -33,11 +33,6 @@ public class Discoteca {
 	@OneToMany(mappedBy="discoteca")
 	private List<Evento> eventi;
 	
-	@ManyToOne
-	@JoinColumn(name="ID_CenaSpettacolo")
-	private CenaSpettacolo cenaSpettacoloScelta;
-
-	
 	
 	public Long getId() {
 		return id;
@@ -95,14 +90,6 @@ public class Discoteca {
 		this.eventi = eventi;
 	}
 
-	public CenaSpettacolo getCenaSpettacoloScelta() {
-		return cenaSpettacoloScelta;
-	}
-
-	public void setCenaSpettacoloScelta(CenaSpettacolo cenaSpettacoloScelta) {
-		this.cenaSpettacoloScelta = cenaSpettacoloScelta;
-	}
-	
 	
 	
 }

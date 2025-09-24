@@ -28,18 +28,11 @@ public class DiscotecaController {
 	private DiscotecaService discotecaService;
 	
 	
-	@Autowired
-	private CredentialsService credentialsService;
-
-	@Autowired
-	private EventoService eventoSerivice;
-	
 	@GetMapping("/")
 	public String home(Model model, @AuthenticationPrincipal UserDetails userDetails) {
 	    ;
 
 	    if (userDetails != null) {
-	        System.out.println(">>> Autenticato come: " + userDetails.getUsername());
 	        model.addAttribute("username", userDetails.getUsername());
 	        model.addAttribute("isAuthenticated", true);
 	    } else {
